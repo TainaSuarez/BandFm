@@ -1,0 +1,11 @@
+{
+  "/api/promocoes/route": "app/api/promocoes/route.js",
+  "/api/banners/route": "app/api/banners/route.js",
+  "/api/noticias/route": "app/api/noticias/route.js",
+  "/page": "app/page.js",
+  "/programacao/page": "app/programacao/page.js",
+  "/equipe/page": "app/equipe/page.js",
+  "/sobre/page": "app/sobre/page.js",
+  "/clube-ouvintes/page": "app/clube-ouvintes/page.js",
+  "/promocoes/page": "app/promocoes/page.js"
+}

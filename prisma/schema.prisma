@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Empresa {
+  id          String   @id @default(cuid())
+  nome        String
+  foto        String?
+  email       String   @unique
+  senha       String
+  descricao   String
+  categoria   String
+  produtos    Produto[] // Relação com produtos
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Noticia {
+  id          String   @id @default(cuid())
+  titulo      String
+  imagem      String?
+  descricao   String
+  fonte       String   // Link da fonte
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Promocao {
+  id          String   @id @default(cuid())
+  titulo      String
+  descricao   String
+  imagem      String?  // Imagem opcional
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ProgramacaoRadio {
+  id              String   @id @default(cuid())
+  diasSemana      String   // JSON string com os dias
+  horarios        String   // Horário do programa
+  nomePrograma    String
+  nomeApresentador String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Banner {
+  id          String   @id @default(cuid())
+  titulo      String
+  imagem      String   // URL da imagem do banner
+  link        String?  // Link opcional para onde o banner direciona
+  ativo       Boolean  @default(true)
+  ordem       Int      @default(0) // Para ordenar os banners
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Produto {
+  id          String   @id @default(cuid())
+  nome        String
+  descricao   String
+  imagem      String   // URL da imagem do produto
+  preco       Float    // Preço do produto
+  ativo       Boolean  @default(true)
+  empresaId   String   // Chave estrangeira para Empresa
+  empresa     Empresa  @relation(fields: [empresaId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Podcast {
+  id          String   @id @default(cuid())
+  titulo      String
+  descricao   String
+  imagem      String   // URL da imagem do podcast
+  audioUrl    String   // URL do arquivo MP3
+  ativo       Boolean  @default(true)
+  duracao     String?  // Duração do podcast (ex: "25:30")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
