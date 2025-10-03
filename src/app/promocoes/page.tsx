@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Promocao } from '@/types'
-import LoginDropdown from '@/components/LoginDropdown'
+import SiteNavbar from '@/components/SiteNavbar'
 
 export default function PromocoesPage() {
   const [promocoes, setPromocoes] = useState<Promocao[]>([])
@@ -28,43 +28,7 @@ export default function PromocoesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-black">
-                Band FM
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center">
-              <div className="flex items-center space-x-8">
-                <Link href="/" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Início
-                </Link>
-                <Link href="/noticias" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Notícias
-                </Link>
-                <Link href="/programacao" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Programação
-                </Link>
-                <Link href="/equipe" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Equipe
-                </Link>
-                <Link href="/sobre" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Sobre
-                </Link>
-                <Link href="/clube-ouvintes" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Clube Ouvintes
-                </Link>
-                <Link href="/promocoes" className="text-black bg-gray-100 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Promoções
-                </Link>
-                <LoginDropdown />
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNavbar />
 
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">

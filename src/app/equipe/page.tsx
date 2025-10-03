@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import LoginDropdown from '@/components/LoginDropdown'
+import SiteNavbar from '@/components/SiteNavbar'
 
 interface TeamMember {
   id: number
@@ -59,92 +59,7 @@ export default function EquipePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <Link href="/" className="text-2xl font-bold text-black">Band FM</Link>
-              </div>
-            </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center">
-              <div className="flex items-center space-x-8">
-                <Link href="/" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Início
-                </Link>
-                <Link href="/noticias" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Notícias
-                </Link>
-                <Link href="/programacao" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Programação
-                </Link>
-                <Link href="/equipe" className="text-black bg-gray-100 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Equipe
-                </Link>
-                <Link href="/sobre" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Sobre
-                </Link>
-                <Link href="/clube-ouvintes" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Clube Ouvintes
-                </Link>
-                <Link href="/promocoes" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Promoções
-                </Link>
-                <LoginDropdown />
-              </div>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden bg-white border-t border-gray-200">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="text-black hover:text-bandfm-orange-500 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-helvetica-black"
-              >
-                ☰
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {menuOpen && (
-            <div className="md:hidden bg-white border-t border-gray-200">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <Link href="/" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                  Início
-                </Link>
-                <Link href="/noticias" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                  Notícias
-                </Link>
-                <Link href="/programacao" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                  Programação
-                </Link>
-                <Link href="/equipe" className="text-black bg-gray-100 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                  Equipe
-                </Link>
-                <Link href="/sobre" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                  Sobre
-                </Link>
-                <Link href="/clube-ouvintes" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                  Clube Ouvintes
-                </Link>
-                <Link href="/promocoes" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                  Promoções
-                </Link>
-                <div className="border-t border-gray-200 pt-2 mt-2">
-                  <Link href="/login" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                    Entrar como Admin
-                  </Link>
-                  <Link href="/login-empresa" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black">
-                    Entrar como Empresa
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
+      <SiteNavbar />
 
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">

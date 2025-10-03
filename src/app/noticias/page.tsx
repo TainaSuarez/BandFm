@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Noticia } from '@/types'
-import LoginDropdown from '@/components/LoginDropdown'
+import SiteNavbar from '@/components/SiteNavbar'
 
 export default function NoticiasPage() {
   const [noticias, setNoticias] = useState<Noticia[]>([])
@@ -36,54 +36,9 @@ export default function NoticiasPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-black">
-                Band FM
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center">
-              <div className="flex items-center space-x-8">
-                <Link href="/" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black uppercase tracking-wider">
-                  HOME
-                </Link>
-                <Link href="/noticias" className="text-black bg-gray-100 px-3 py-2 rounded-md text-sm font-helvetica-black uppercase tracking-wider">
-                  NOTÍCIAS
-                </Link>
-                <Link href="/programacao" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black uppercase tracking-wider">
-                  PROGRAMAÇÃO
-                </Link>
-                <Link href="/equipe" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black uppercase tracking-wider">
-                  EQUIPE
-                </Link>
-                <Link href="/sobre" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black uppercase tracking-wider">
-                  A RÁDIO
-                </Link>
-                <Link href="/clube-ouvintes" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black uppercase tracking-wider">
-                  CLUBE OUVINTES
-                </Link>
-                <Link href="/promocoes" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black uppercase tracking-wider">
-                  PROMOÇÕES
-                </Link>
-                <LoginDropdown />
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNavbar />
 
-      {/* Hero Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-orange-500 text-white py-3 px-6 rounded-full text-center max-w-xl mx-auto shadow-lg">
-            <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
-              NOTÍCIAS
-            </h1>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section moved below to News Section */}
 
       {/* Search Section */}
       <section className="py-8 bg-white shadow-sm">
@@ -110,6 +65,7 @@ export default function NoticiasPage() {
       {/* News Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Title moved below count and above cards */}
           {loading ? (
             <div className="flex justify-center items-center h-64">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
@@ -127,6 +83,13 @@ export default function NoticiasPage() {
                         <>Total de <span className="font-semibold">{filteredNoticias.length}</span> notícias</>
                       )}
                     </p>
+                  </div>
+
+                  {/* Title above cards, full-width left-aligned */}
+                  <div className="bg-bandfm-orange-500 text-white py-3 px-6 rounded-full w-full shadow-lg mb-6 text-left">
+                    <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
+                      NOTÍCIAS
+                    </h1>
                   </div>
 
                   {/* News Grid */}
@@ -209,7 +172,7 @@ export default function NoticiasPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-green-900 text-black py-16">
+      <section className="bg-white text-green-900 py-16">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Fique sempre informado!
@@ -220,13 +183,13 @@ export default function NoticiasPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/programacao"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-helvetica-black rounded-md text-green-900 bg-white hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-green-700 text-base font-helvetica-black rounded-md text-white bg-green-700 hover:bg-green-800 transition-colors"
             >
               Ver Programação
             </Link>
             <Link 
               href="/promocoes"
-              className="inline-flex items-center px-6 py-3 border border-white text-base font-helvetica-black rounded-md text-black hover:bg-green-800 transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-green-700 text-base font-helvetica-black rounded-md text-green-700 hover:bg-green-50 transition-colors"
             >
               Ver Promoções
             </Link>

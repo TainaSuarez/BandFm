@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ProgramacaoRadio } from '@/types'
+import SiteNavbar from '@/components/SiteNavbar'
 
 export default function ProgramacaoPage() {
   const [programacao, setProgramacao] = useState<ProgramacaoRadio[]>([])
@@ -52,59 +53,7 @@ export default function ProgramacaoPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-black">
-                Band FM
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center">
-              <div className="flex items-center space-x-8">
-                <Link href="/" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Início
-                </Link>
-                <Link href="/noticias" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Notícias
-                </Link>
-                <Link href="/programacao" className="text-black bg-gray-100 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Programação
-                </Link>
-                <Link href="/equipe" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Equipe
-                </Link>
-                <Link href="/sobre" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Sobre
-                </Link>
-                <Link href="/clube-ouvintes" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Clube Ouvintes
-                </Link>
-                <Link href="/promocoes" className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black">
-                  Promoções
-                </Link>
-                
-                {/* Dropdown Menu with Gear Icon */}
-                <div className="relative group">
-                  <button className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black flex items-center">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd"></path>
-                    </svg>
-                  </button>
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <Link href="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Entrar como Admin
-                    </Link>
-                    <Link href="/login-empresa" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Entrar como Empresa
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNavbar />
 
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
@@ -126,7 +75,7 @@ export default function ProgramacaoPage() {
               onClick={() => setSelectedDay('')}
               className={`px-4 py-2 rounded-md text-sm font-helvetica-black transition-colors ${
                 selectedDay === '' 
-                  ? 'bg-purple-600 text-black' 
+                  ? 'bg-bandfm-orange-500 text-white hover:bg-bandfm-orange-600' 
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -138,7 +87,7 @@ export default function ProgramacaoPage() {
                 onClick={() => setSelectedDay(dia)}
                 className={`px-4 py-2 rounded-md text-sm font-helvetica-black transition-colors ${
                   selectedDay === dia 
-                    ? 'bg-purple-600 text-black' 
+                    ? 'bg-bandfm-orange-500 text-white hover:bg-bandfm-orange-600' 
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
@@ -154,13 +103,13 @@ export default function ProgramacaoPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {loading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
             </div>
           ) : (
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-purple-50">
+                  <thead className="bg-orange-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-widerr">
                         Horário
@@ -183,14 +132,14 @@ export default function ProgramacaoPage() {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-helvetica-black text-gray-900">
                             {programa.horarios}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-purple-600 font-semibold">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-bandfm-orange-700 font-semibold">
                             {programa.nomePrograma}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {programa.nomeApresentador}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-helvetica-black bg-purple-100 text-purple-800">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-helvetica-black bg-orange-100 text-bandfm-orange-700">
                               {programa.diasSemana}
                             </span>
                           </td>
@@ -222,7 +171,7 @@ export default function ProgramacaoPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-purple-900 text-black py-16">
+      <section className="bg-white text-black py-16">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Não perca seus programas favoritos!
@@ -233,13 +182,13 @@ export default function ProgramacaoPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/promocoes"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-helvetica-black rounded-md text-purple-900 bg-white hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-bandfm-orange-600 text-base font-helvetica-black rounded-md text-white bg-bandfm-orange-500 hover:bg-bandfm-orange-600 transition-colors"
             >
               Ver Promoções
             </Link>
             <Link 
               href="/clube-ouvintes"
-              className="inline-flex items-center px-6 py-3 border border-white text-base font-helvetica-black rounded-md text-black hover:bg-purple-800 transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-green-700 text-base font-helvetica-black rounded-md text-green-700 hover:bg-green-50 transition-colors"
             >
               Clube Ouvintes
             </Link>
