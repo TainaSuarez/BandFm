@@ -8,7 +8,7 @@ export default function SobrePage() {
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
       <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
               <Link href="/" className="text-2xl font-bold text-black">
@@ -47,7 +47,7 @@ export default function SobrePage() {
 
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="bg-bandfm-orange-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
             <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
               A RÁDIO
@@ -58,7 +58,7 @@ export default function SobrePage() {
 
       {/* Historia Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="bg-blue-100 rounded-full w-16 h-20 flex items-center justify-center mb-6">
@@ -105,7 +105,7 @@ export default function SobrePage() {
 
       {/* Slogan Section */}
       <section className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
               Nosso Compromisso
@@ -128,7 +128,7 @@ export default function SobrePage() {
 
       {/* Services Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             O que fazemos
           </h2>
@@ -180,7 +180,7 @@ export default function SobrePage() {
 
       {/* Contact Section */}
       <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-black">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
               Estamos Sempre no Ar
@@ -226,7 +226,7 @@ export default function SobrePage() {
 
       {/* Call to Action */}
       <section className="py-16 bg-white">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Faça Parte da Nossa História
           </h2>

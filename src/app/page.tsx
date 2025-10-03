@@ -206,15 +206,15 @@ export default function HomePage() {
       {/* Promotions Section - Featured */}
       <section id="promocoes" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Title with white background and orange text */}
+          {/* Orange highlighted title */}
           <div className="max-w-7xl mx-auto mb-12">
-            <div className="bg-white border border-gray-200 text-bandfm-orange-600 text-left py-3 px-6 rounded-full flex justify-between items-center">
+            <div className="bg-bandfm-orange-500 text-white text-left py-3 px-6 rounded-full flex justify-between items-center">
               <h2 className="text-lg font-helvetica-black font-extrabold uppercase tracking-wider">
                 PROMOÇÕES DESTACADAS
               </h2>
               <Link 
                 href="/promocoes"
-                className="text-bandfm-orange-600 hover:text-bandfm-orange-700 font-helvetica-black flex items-center text-sm"
+                className="text-white hover:text-gray-200 font-helvetica-black flex items-center text-sm"
               >
                 Ver todas
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,16 +227,16 @@ export default function HomePage() {
             {promocoes.length > 0 ? (
               promocoes.slice(0, 2).map((promocao) => (
                 <div key={promocao.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold mb-4 text-bandfm-orange-700">
+                  {promocao.imagem && (
+                    <img src={promocao.imagem} alt={promocao.titulo} className="w-full h-40 object-cover" />
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold mb-2 text-bandfm-orange-700">
                       {promocao.titulo}
                     </h3>
                     <p className="text-lg text-bandfm-orange-600">
                       {promocao.descricao}
                     </p>
-                    {promocao.imagem && (
-                      <img src={promocao.imagem} alt={promocao.titulo} className="mt-4 w-full h-32 object-cover rounded" />
-                    )}
                   </div>
                 </div>
               ))

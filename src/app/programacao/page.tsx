@@ -53,7 +53,7 @@ export default function ProgramacaoPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
       <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
               <Link href="/" className="text-2xl font-bold text-black">
@@ -108,7 +108,7 @@ export default function ProgramacaoPage() {
 
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="bg-bandfm-orange-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
             <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
               PROGRAMAÇÃO
@@ -119,7 +119,7 @@ export default function ProgramacaoPage() {
 
       {/* Filter Section */}
       <section className="py-8 bg-white shadow-sm">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex flex-wrap items-center gap-4">
             <span className="text-gray-700 font-helvetica-black">Filtrar por dia:</span>
             <button
@@ -151,7 +151,7 @@ export default function ProgramacaoPage() {
 
       {/* Programming Section */}
       <section className="py-16">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {loading ? (
             <div className="flex justify-center items-center h-64">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
@@ -223,7 +223,7 @@ export default function ProgramacaoPage() {
 
       {/* Call to Action */}
       <section className="bg-purple-900 text-black py-16">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Não perca seus programas favoritos!
           </h2>
@@ -249,7 +249,7 @@ export default function ProgramacaoPage() {
 
       {/* Footer */}
       <footer className="bg-gray-100 text-black py-6">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-lg font-semibold mb-2 text-black">Band FM</h3>

@@ -37,7 +37,7 @@ export default function NoticiasPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
       <nav className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
               <Link href="/" className="text-2xl font-bold text-black">
@@ -76,8 +76,8 @@ export default function NoticiasPage() {
 
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-green-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="bg-bandfm-orange-500 text-white py-3 px-6 rounded-full text-center max-w-xl mx-auto shadow-lg">
             <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
               NOTÍCIAS
             </h1>
@@ -87,7 +87,7 @@ export default function NoticiasPage() {
 
       {/* Search Section */}
       <section className="py-8 bg-white shadow-sm">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="max-w-md mx-auto">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -97,7 +97,7 @@ export default function NoticiasPage() {
               </div>
               <input
                 type="text"
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-bandfm-orange-500 focus:border-bandfm-orange-500"
                 placeholder="Buscar notícias..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -109,10 +109,10 @@ export default function NoticiasPage() {
 
       {/* News Section */}
       <section className="py-16">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {loading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
             </div>
           ) : (
             <>
@@ -153,7 +153,7 @@ export default function NoticiasPage() {
                               year: 'numeric'
                             })}
                           </div>
-                          <h2 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                          <h2 className="text-xl font-bold text-bandfm-orange-700 mb-3 line-clamp-2">
                             {noticia.titulo}
                           </h2>
                           <p className="text-gray-600 mb-4 line-clamp-3">
@@ -164,7 +164,7 @@ export default function NoticiasPage() {
                               href={noticia.fonte} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center text-green-600 hover:text-green-800 font-helvetica-black transition-colors duration-200"
+                              className="inline-flex items-center text-bandfm-orange-600 hover:text-bandfm-orange-700 font-helvetica-black transition-colors duration-200"
                             >
                               Ler notícia completa
                               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +195,7 @@ export default function NoticiasPage() {
                     {searchTerm && (
                       <button
                         onClick={() => setSearchTerm('')}
-                        className="inline-flex items-center px-6 py-3 border border-transparent text-base font-helvetica-black rounded-md text-black bg-green-600 hover:bg-green-700 transition-colors"
+                        className="inline-flex items-center px-8 py-3 border border-transparent text-base font-helvetica-black rounded-full text-white bg-bandfm-orange-500 hover:bg-bandfm-orange-600 transition-colors"
                       >
                         Ver todas as notícias
                       </button>
@@ -210,7 +210,7 @@ export default function NoticiasPage() {
 
       {/* Call to Action */}
       <section className="bg-green-900 text-black py-16">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12 text-center">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Fique sempre informado!
           </h2>
@@ -236,7 +236,7 @@ export default function NoticiasPage() {
 
       {/* Footer */}
       <footer className="bg-gray-100 text-black py-6">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-lg font-semibold mb-2 text-black">Band FM</h3>

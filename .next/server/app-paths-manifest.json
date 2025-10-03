@@ -1,4 +1,15 @@
 {
+  "/api/noticias/route": "app/api/noticias/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/programacao/route": "app/api/programacao/route.js",
+  "/api/promocoes/route": "app/api/promocoes/route.js",
   "/page": "app/page.js",
+  "/clube-ouvintes/page": "app/clube-ouvintes/page.js",
+  "/noticias/page": "app/noticias/page.js",
+  "/empresa/[id]/page": "app/empresa/[id]/page.js",
+  "/login/page": "app/login/page.js",
+  "/programacao/page": "app/programacao/page.js",
+  "/equipe/page": "app/equipe/page.js",
+  "/sobre/page": "app/sobre/page.js",
   "/promocoes/page": "app/promocoes/page.js"
 }
