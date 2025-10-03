@@ -300,36 +300,24 @@ export default function EmpresaPublicPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white text-black py-12">
+      <footer className="bg-gray-100 text-black py-6">
         <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-xl font-bold mb-4">Band FM</h3>
-              <p className="text-gray-400">
+              <h3 className="text-lg font-semibold mb-2 text-black">Band FM</h3>
+              <p className="text-black text-sm">
                 A sua rádio do seu jeito. Conectando você com o melhor da música e informação.
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Navegação</h3>
-              <ul className="space-y-2">
-                <li><Link href="/" className="text-gray-400 hover:text-bandfm-orange-500">Início</Link></li>
-                <li><Link href="/noticias" className="text-gray-400 hover:text-bandfm-orange-500">Notícias</Link></li>
-                <li><Link href="/programacao" className="text-gray-400 hover:text-bandfm-orange-500">Programação</Link></li>
-                <li><Link href="/equipe" className="text-gray-400 hover:text-bandfm-orange-500">Equipe</Link></li>
-                <li><Link href="/sobre" className="text-gray-400 hover:text-bandfm-orange-500">Sobre</Link></li>
-                <li><Link href="/clube-ouvintes" className="text-gray-400 hover:text-bandfm-orange-500">Clube Ouvintes</Link></li>
-                <li><Link href="/promocoes" className="text-gray-400 hover:text-bandfm-orange-500">Promoções</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4">Contato</h3>
-              <p className="text-gray-400">Email: bandfm@bandfmfronteira.com.br</p>
-              <p className="text-gray-400">Telefone: +55 3242 4092</p>
-              <p className="text-gray-400">WhatsApp: +11 3743 1313</p>
+              <h3 className="text-lg font-semibold mb-2 text-black">Contato</h3>
+              <p className="text-black text-sm">Email: bandfm@bandfmfronteira.com.br</p>
+              <p className="text-black text-sm">Telefone: +55 3242 4092</p>
+              <p className="text-black text-sm">WhatsApp: +11 3743 1313</p>
             </div>
           </div>
-          <div className="mt-8 text-center text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Band FM 96.1 Livramento. Todos os direitos reservados.
+          <div className="border-t border-gray-300 mt-4 pt-4 text-center">
+            <p className="text-sm text-black">&copy; {new Date().getFullYear()} Band FM 96.1 Livramento. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

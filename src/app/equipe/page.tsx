@@ -329,39 +329,24 @@ export default function EquipePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white text-black py-12">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <footer className="bg-gray-100 text-black py-6">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-lg font-semibold mb-4">Band FM</h3>
-              <p className="text-black">
-                A sua rádio online com a melhor programação
-              </p>
-              <p className="text-black mt-2 text-sm">
-                Desde 1983 fazendo história no rádio brasileiro
+              <h3 className="text-lg font-semibold mb-2 text-black">Band FM</h3>
+              <p className="text-black text-sm">
+                A sua rádio do seu jeito. Conectando você com o melhor da música e informação.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Nossa Equipe</h3>
-              <ul className="space-y-2 text-black text-sm">
-                {teamMembers.map((member) => (
-                  <li key={member.id}>
-                    <span className="font-helvetica-black">{member.nome}</span> - {member.programa}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contato</h3>
-              <div className="text-black space-y-1">
-                <p>📞 +55 3242 4092</p>
-                <p>📱 +11 3743 1313</p>
-                <p className="mt-2">Sant'Ana do Livramento</p>
-              </div>
+              <h3 className="text-lg font-semibold mb-2 text-black">Contato</h3>
+              <p className="text-black text-sm">Email: bandfm@bandfmfronteira.com.br</p>
+              <p className="text-black text-sm">Telefone: +55 3242 4092</p>
+              <p className="text-black text-sm">WhatsApp: +11 3743 1313</p>
             </div>
           </div>
-          <div className="border-t border-gray-200 mt-8 pt-8 text-center text-black">
-            <p>&copy; 2024 Band FM. Todos os direitos reservados.</p>
+          <div className="border-t border-gray-300 mt-4 pt-4 text-center">
+            <p className="text-sm text-black">&copy; {new Date().getFullYear()} Band FM 96.1 Livramento. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

@@ -1,4 +1,4 @@
-// File: C:\Users\yeffe\OneDrive\Área de Trabalho\AppBandFM\src\app\api\promocoes\route.ts
+// File: C:\Users\CLIENTE2025\Desktop\Apps\BandFM materiales\AppBandFM\AppBandFM\src\app\api\promocoes\route.ts
 import * as entry from '../../../../../src/app/api/promocoes/route.js'
 import type { NextRequest } from 'next/server.js'
 

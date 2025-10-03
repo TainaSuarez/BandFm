@@ -1,4 +1,4 @@
-// File: C:\Users\yeffe\OneDrive\Área de Trabalho\AppBandFM\src\app\promocoes\page.tsx
+// File: C:\Users\CLIENTE2025\Desktop\Apps\BandFM materiales\AppBandFM\AppBandFM\src\app\promocoes\page.tsx
 import * as entry from '../../../../src/app/promocoes/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
