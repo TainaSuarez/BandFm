@@ -33,20 +33,17 @@ export default function PodcastsPage() {
       {/* Navigation */}
       <SiteNavbar />
 
-      {/* Hero Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-green-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
-            <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
-              PODCASTS
-            </h1>
-          </div>
-        </div>
-      </section>
 
       {/* Podcasts Section */}
       <section className="py-16 bg-white">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+           <div className="max-w-7xl mx-auto mb-12">
+             <div className="bg-bandfm-green-500 text-white text-left py-3 px-6 rounded-full">
+               <h2 className="text-lg font-helvetica-black font-extrabold uppercase tracking-wider text-white">
+                 PODCASTS
+               </h2>
+             </div>
+           </div>
           {loading ? (
             <div className="flex justify-center items-center h-64">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
@@ -130,7 +127,7 @@ export default function PodcastsPage() {
 
       {/* Footer */}
       <footer className="bg-gray-100 text-black py-6">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-lg font-semibold mb-2 text-black">Band FM</h3>

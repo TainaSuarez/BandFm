@@ -61,31 +61,35 @@ export default function EquipePage() {
       {/* Navigation */}
       <SiteNavbar />
 
-      {/* Hero Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-green-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
-            <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
-              EQUIPE
-            </h1>
-          </div>
-        </div>
-      </section>
-
       {/* Team Members Grid */}
       <section className="py-20 bg-white">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
               Locutores da Band FM
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Nossa equipe de locutores trabalha 24 horas para levar até você a melhor programação, 
-              com muito profissionalismo, alegria e dedicação.
-            </p>
+            
+            {/* Mensaje destacado */}
+            <div className="relative bg-bandfm-green-500 rounded-2xl p-8 mb-8 max-w-4xl mx-auto shadow-2xl">
+              <div className="absolute inset-0 bg-black bg-opacity-10 rounded-2xl"></div>
+              <div className="relative z-10">
+                <p className="text-xl md:text-2xl font-bold text-white leading-relaxed">
+                  Nossa equipe de locutores trabalha <span className="bg-bandfm-orange-500 px-3 py-1 rounded-lg text-white font-black">24 horas</span> para levar até você a melhor programação, com muito <span className="text-white font-black">profissionalismo</span>, <span className="text-white font-black">alegria</span> e <span className="text-white font-black">dedicação</span>.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Container EQUIPE */}
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8">
+            <div className="bg-bandfm-green-500 text-white text-left py-3 px-6 rounded-full">
+              <h1 className="text-lg font-helvetica-black uppercase tracking-wider text-white">
+                EQUIPE
+              </h1>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             {teamMembers.map((member, index) => (
               <div key={member.id} className="group">
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
@@ -173,54 +177,14 @@ export default function EquipePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-900 to-blue-900 text-black">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Band FM em Números
-            </h2>
-            <p className="text-xl text-blue-100">
-              Nossa equipe trabalhando para você 24 horas por dia
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 mb-4">
-                <div className="text-4xl font-bold text-yellow-400 mb-2">4</div>
-                <div className="text-blue-100">Locutores</div>
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 mb-4">
-                <div className="text-4xl font-bold text-green-400 mb-2">24h</div>
-                <div className="text-blue-100">No Ar</div>
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 mb-4">
-                <div className="text-4xl font-bold text-pink-400 mb-2">6</div>
-                <div className="text-blue-100">Programas</div>
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 mb-4">
-                <div className="text-4xl font-bold text-purple-400 mb-2">40+</div>
-                <div className="text-blue-100">Anos de História</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-white">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <section className="py-16 bg-bandfm-orange-500">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
             Ouça Agora a Band FM
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
             Sintonize na frequência da alegria e faça parte da nossa família de ouvintes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

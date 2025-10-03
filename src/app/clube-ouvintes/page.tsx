@@ -40,9 +40,9 @@ export default function ClubeOuvintesPage() {
 
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-green-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
-            <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="bg-bandfm-green-500 text-white py-3 px-6 rounded-full text-left">
+            <h1 className="text-lg font-helvetica-black uppercase tracking-wider">
               CLUBE OUVINTES
             </h1>
           </div>
@@ -51,14 +51,14 @@ export default function ClubeOuvintesPage() {
 
       {/* Filter Section */}
       <section className="py-8 bg-white shadow-sm">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex flex-wrap items-center gap-4">
             <span className="text-gray-700 font-helvetica-black">Filtrar por categoria:</span>
             <button
               onClick={() => setCategoriaFilter('')}
               className={`px-4 py-2 rounded-md text-sm font-helvetica-black transition-colors ${
                 categoriaFilter === '' 
-                  ? 'bg-blue-600 text-black' 
+                  ? 'bg-bandfm-orange-500 text-white' 
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -70,7 +70,7 @@ export default function ClubeOuvintesPage() {
                 onClick={() => setCategoriaFilter(categoria)}
                 className={`px-4 py-2 rounded-md text-sm font-helvetica-black transition-colors ${
                   categoriaFilter === categoria 
-                    ? 'bg-blue-600 text-black' 
+                    ? 'bg-bandfm-orange-500 text-white' 
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
@@ -83,10 +83,10 @@ export default function ClubeOuvintesPage() {
 
       {/* Companies Section */}
       <section className="py-16">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {loading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -105,7 +105,7 @@ export default function ClubeOuvintesPage() {
                         <h3 className="text-xl font-semibold text-gray-900">
                           {empresa.nome}
                         </h3>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-helvetica-black bg-blue-100 text-bandfm-green-600">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-helvetica-black bg-bandfm-green-100 text-bandfm-green-600">
                           {empresa.categoria}
                         </span>
                       </div>
@@ -122,7 +122,7 @@ export default function ClubeOuvintesPage() {
                       <div className="flex justify-center">
                         <Link
                           href={`/empresa/${empresa.id}`}
-                          className="bg-blue-600 hover:bg-gray-600 text-black font-semibold py-2 px-6 rounded-full transition-colors duration-200"
+                          className="bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-200"
                         >
                           Ver Produtos
                         </Link>
@@ -150,7 +150,7 @@ export default function ClubeOuvintesPage() {
 
       {/* Footer */}
       <footer className="bg-gray-100 text-black py-6">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-lg font-semibold mb-2 text-black">Band FM</h3>

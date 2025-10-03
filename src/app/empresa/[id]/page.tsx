@@ -52,7 +52,7 @@ export default function EmpresaPublicPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
       </div>
     )
   }
@@ -64,7 +64,7 @@ export default function EmpresaPublicPage() {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Empresa não encontrada</h1>
           <Link 
             href="/clube-ouvintes"
-            className="bg-blue-600 hover:bg-gray-600 text-black font-semibold py-2 px-4 rounded-md"
+            className="bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-semibold py-2 px-4 rounded-md"
           >
             Voltar ao Clube Ouvintes
           </Link>
@@ -112,8 +112,17 @@ export default function EmpresaPublicPage() {
       </div>
 
       {/* Empresa Header */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-black py-16">
+      <section className="bg-gradient-to-r from-bandfm-green-500 to-bandfm-green-600 text-white py-16">
         <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Botón Voltar */}
+          <div className="mb-8">
+            <Link 
+              href="/clube-ouvintes"
+              className="text-green-100 hover:text-white font-helvetica-black flex items-center transition-colors duration-200"
+            >
+              ← Voltar ao Clube Ouvintes
+            </Link>
+          </div>
           <div className="flex items-center space-x-8">
             {empresa.foto && (
               <div className="flex-shrink-0">
@@ -127,19 +136,19 @@ export default function EmpresaPublicPage() {
             <div className="flex-1">
               <div className="flex items-center space-x-4 mb-4">
                 <h1 className="text-4xl font-bold">{empresa.nome}</h1>
-                <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-helvetica-black bg-white bg-opacity-20">
+                <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-helvetica-black bg-bandfm-orange-500 text-white">
                   {empresa.categoria}
                 </span>
               </div>
-              <p className="text-xl text-blue-100 mb-4">
+              <p className="text-xl text-green-100 mb-4">
                 {empresa.descricao}
               </p>
-              <div className="flex items-center text-blue-100">
+              <div className="flex items-center text-green-100">
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                 </svg>
-                <a href={`mailto:${empresa.email}`} className="hover:text-bandfm-orange-500 transition-colors">
+                <a href={`mailto:${empresa.email}`} className="hover:text-bandfm-orange-300 transition-colors">
                   {empresa.email}
                 </a>
               </div>
@@ -152,38 +161,32 @@ export default function EmpresaPublicPage() {
       <section className="py-16 bg-white">
         <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-3xl font-helvetica-black text-gray-900">
               Nossos Produtos {produtos.length > 0 && `(${produtos.length})`}
             </h2>
-            <Link 
-              href="/clube-ouvintes"
-              className="text-bandfm-green-500 hover:text-blue-700 font-helvetica-black flex items-center"
-            >
-              ← Voltar ao Clube Ouvintes
-            </Link>
           </div>
           
           {produtos.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {produtos.map((produto) => (
-                <div key={produto.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div key={produto.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                   <img 
                     src={produto.imagem} 
                     alt={produto.nome} 
                     className="w-full h-48 object-cover" 
                   />
                   <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg font-helvetica-black text-gray-900 mb-2">
                       {produto.nome}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="text-gray-600 mb-4 line-clamp-3 text-sm">
                       {produto.descricao}
                     </p>
                     <div className="flex justify-between items-center">
-                      <span className="text-2xl font-bold text-green-600">
+                      <span className="text-2xl font-helvetica-black text-bandfm-green-500">
                         R$ {produto.preco.toFixed(2)}
                       </span>
-                      <span className="text-xs text-green-500 bg-green-100 px-2 py-1 rounded-full">
+                      <span className="text-xs text-bandfm-green-500 bg-green-100 px-3 py-1 rounded-full font-medium">
                         ✓ Disponível
                       </span>
                     </div>
@@ -206,7 +209,7 @@ export default function EmpresaPublicPage() {
               </p>
               <Link 
                 href="/clube-ouvintes"
-                className="bg-blue-600 hover:bg-gray-600 text-black font-semibold py-2 px-6 rounded-full transition-colors duration-200"
+                className="bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-200"
               >
                 Explorar outras empresas
               </Link>
