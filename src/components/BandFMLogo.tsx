@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 interface BandFMLogoProps {
   size?: 'sm' | 'md' | 'lg'
   showFrequency?: boolean
@@ -13,38 +15,29 @@ export default function BandFMLogo({
 }: BandFMLogoProps) {
   const sizes = {
     sm: {
-      main: 'text-xl',
-      sub: 'text-xs',
-      frequency: 'text-lg'
+      width: 120,
+      height: 60
     },
     md: {
-      main: 'text-3xl',
-      sub: 'text-xs',
-      frequency: 'text-2xl'
+      width: 180,
+      height: 90
     },
     lg: {
-      main: 'text-4xl md:text-6xl',
-      sub: 'text-sm',
-      frequency: 'text-3xl md:text-5xl'
+      width: 280,
+      height: 140
     }
   }
 
   return (
-    <div className={`flex flex-col items-center ${className}`}>
-      {showFrequency && (
-        <div className={`${sizes[size].frequency} font-bold text-bandfm-green-500 font-sans`}>
-          96.1
-        </div>
-      )}
-      <div className={`${sizes[size].main} font-bold font-sans -mt-1`}>
-        <span className="text-bandfm-orange-500">Band</span>
-        <span className="text-bandfm-green-500">fm</span>
-      </div>
-      {size !== 'sm' && (
-        <div className={`${sizes[size].sub} text-gray-500 font-sans tracking-wider uppercase -mt-1`}>
-          Livramento
-        </div>
-      )}
+    <div className={`flex items-center ${className}`}>
+      <Image 
+        src="/logo-bandfm.png" 
+        alt="Band FM 96.1 Livramento"
+        width={sizes[size].width}
+        height={sizes[size].height}
+        className="object-contain"
+        priority
+      />
     </div>
   )
 }

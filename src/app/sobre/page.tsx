@@ -12,7 +12,7 @@ export default function SobrePage() {
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-orange-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
+          <div className="bg-green-600 text-white py-3 px-6 rounded-full w-full shadow-lg text-left">
             <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
               A RÁDIO
             </h1>
@@ -46,7 +46,7 @@ export default function SobrePage() {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-8 text-black">
+              <div className="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl p-8 text-white">
                 <div className="text-center">
                   <div className="text-6xl font-bold mb-2">1983</div>
                   <div className="text-xl">Ano de fundação</div>
@@ -56,7 +56,7 @@ export default function SobrePage() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-yellow-400 rounded-2xl p-6 text-gray-900 shadow-lg">
+              <div className="absolute -bottom-6 -right-6 bg-orange-500 rounded-2xl p-6 text-white shadow-lg">
                 <div className="text-center">
                   <div className="text-2xl font-bold">24h</div>
                   <div className="text-sm">No ar</div>
@@ -98,9 +98,9 @@ export default function SobrePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Programação Local */}
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="bg-green-500 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="bg-orange-500 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2.5 2.5 0 00-2.5-2.5H15" />
                 </svg>
               </div>
@@ -112,9 +112,9 @@ export default function SobrePage() {
             </div>
 
             {/* Unidade Móvel */}
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="bg-purple-500 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div className="bg-green-600 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
@@ -128,7 +128,7 @@ export default function SobrePage() {
             {/* Tecnologia */}
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 hover:shadow-lg transition-shadow">
               <div className="bg-orange-500 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
@@ -143,13 +143,13 @@ export default function SobrePage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-black">
+      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">
               Estamos Sempre no Ar
             </h2>
-            <p className="text-xl text-blue-100">
+            <p className="text-xl text-white opacity-90">
               Na Band FM, sempre tem alguém, ao vivo, conversando com você.
             </p>
           </div>
@@ -157,14 +157,14 @@ export default function SobrePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {/* Rede Band FM */}
             <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <div className="bg-yellow-400 rounded-full w-16 h-20 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM15.657 6.343a1 1 0 011.414 0A9.972 9.972 0 0119 12a9.972 9.972 0 01-1.929 5.657 1 1 0 11-1.414-1.414A7.971 7.971 0 0017 12a7.971 7.971 0 00-1.343-4.243 1 1 0 010-1.414z" clipRule="evenodd"></path>
                   <path fillRule="evenodd" d="M13.828 7.172a1 1 0 011.414 0A5.983 5.983 0 0117 12a5.983 5.983 0 01-1.758 4.828 1 1 0 11-1.414-1.414A3.987 3.987 0 0015 12a3.987 3.987 0 00-1.172-2.828 1 1 0 010-1.414z" clipRule="evenodd"></path>
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2">Rede Band FM</h3>
-              <p className="text-blue-100">
+              <p className="text-white opacity-90">
                 24 horas no ar<br />
                 Via satélite em todo o Brasil
               </p>
@@ -172,13 +172,13 @@ export default function SobrePage() {
 
             {/* Contato */}
             <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <div className="bg-green-400 rounded-full w-16 h-20 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-2">Fale Conosco</h3>
-              <div className="text-blue-100 space-y-1">
+              <div className="text-white opacity-90 space-y-1">
                 <p>📞 +55 3242 4092</p>
                 <p>📱 +11 3743 1313</p>
                 <p className="text-sm mt-2">WhatsApp disponível</p>
@@ -200,13 +200,13 @@ export default function SobrePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/programacao"
-              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-helvetica-black rounded-md text-black bg-blue-600 hover:bg-gray-600 transition-colors"
+              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-helvetica-black rounded-md text-white bg-orange-500 hover:bg-orange-600 transition-colors"
             >
               Ver Programação
             </Link>
             <Link 
               href="/clube-ouvintes"
-              className="inline-flex items-center px-8 py-3 border border-blue-600 text-base font-helvetica-black rounded-md text-bandfm-green-500 bg-white hover:bg-blue-50 transition-colors"
+              className="inline-flex items-center px-8 py-3 border border-green-600 text-base font-helvetica-black rounded-md text-green-600 bg-white hover:bg-green-50 transition-colors"
             >
               Clube Ouvintes
             </Link>

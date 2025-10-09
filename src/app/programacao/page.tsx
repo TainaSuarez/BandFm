@@ -58,7 +58,7 @@ export default function ProgramacaoPage() {
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-orange-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
+          <div className="bg-bandfm-orange-500 text-white py-3 px-6 rounded-full w-full shadow-lg text-left">
             <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
               PROGRAMAÇÃO
             </h1>

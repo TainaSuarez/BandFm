@@ -1,12 +1,14 @@
 {
   "/api/produtos/route": "app/api/produtos/route.js",
   "/api/empresas/[id]/route": "app/api/empresas/[id]/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
+  "/api/noticias/route": "app/api/noticias/route.js",
   "/api/promocoes/route": "app/api/promocoes/route.js",
-  "/sobre/page": "app/sobre/page.js",
-  "/podcasts/page": "app/podcasts/page.js",
-  "/equipe/page": "app/equipe/page.js",
-  "/clube-ouvintes/page": "app/clube-ouvintes/page.js",
+  "/api/banners/route": "app/api/banners/route.js",
+  "/api/noticias/[id]/route": "app/api/noticias/[id]/route.js",
   "/empresa/[id]/page": "app/empresa/[id]/page.js",
-  "/promocoes/page": "app/promocoes/page.js"
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/equipe/page": "app/equipe/page.js",
+  "/noticias/page": "app/noticias/page.js",
+  "/noticias/[id]/page": "app/noticias/[id]/page.js"
 }

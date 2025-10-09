@@ -33,7 +33,7 @@ export default function PromocoesPage() {
       {/* Hero Section */}
       <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-bandfm-orange-500 text-black py-4 px-8 rounded-full text-center max-w-xs mx-auto shadow-lg">
+          <div className="bg-bandfm-orange-500 text-white py-3 px-6 rounded-full w-full shadow-lg text-left">
             <h1 className="text-xl font-bold uppercase tracking-wider font-sans">
               PROMOÇÕES
             </h1>
@@ -53,24 +53,24 @@ export default function PromocoesPage() {
               {promocoes.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {promocoes.map((promocao) => (
-                    <div key={promocao.id} className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                      <div className="p-8 text-black">
-                        <h3 className="text-2xl font-bold mb-4">
+                    <div key={promocao.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                      {promocao.imagem && (
+                        <div className="w-full">
+                          <img 
+                            src={promocao.imagem} 
+                            alt={promocao.titulo}
+                            className="w-full h-48 object-cover"
+                          />
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <h3 className="text-2xl font-bold mb-4 text-gray-900">
                           {promocao.titulo}
                         </h3>
-                        <p className="text-lg mb-6 leading-relaxed">
+                        <p className="text-lg mb-6 leading-relaxed font-bold text-gray-700">
                           {promocao.descricao}
                         </p>
-                        {promocao.imagem && (
-                          <div className="mb-4">
-                            <img 
-                              src={promocao.imagem} 
-                              alt={promocao.titulo}
-                              className="w-full h-40 object-cover rounded-lg"
-                            />
-                          </div>
-                        )}
-                        <div className="flex items-center text-sm text-black/80">
+                        <div className="flex items-center text-sm text-gray-500">
                           <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"></path>
                           </svg>
@@ -118,13 +118,13 @@ export default function PromocoesPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/programacao"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-helvetica-black rounded-md text-blue-900 bg-white hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-helvetica-black rounded-md text-white bg-orange-500 hover:bg-orange-600 transition-colors"
             >
               Ver Programação
             </Link>
             <Link 
               href="/clube-ouvintes"
-              className="inline-flex items-center px-6 py-3 border border-white text-base font-helvetica-black rounded-md text-black hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-green-600 text-base font-helvetica-black rounded-md text-green-600 hover:bg-green-50 transition-colors"
             >
               Clube Ouvintes
             </Link>
