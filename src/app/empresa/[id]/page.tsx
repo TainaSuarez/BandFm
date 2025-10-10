@@ -15,6 +15,7 @@ export default function EmpresaPublicPage() {
   const [produtos, setProdutos] = useState<Produto[]>([])
   const [loading, setLoading] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   useEffect(() => {
     if (empresaId) {
@@ -80,9 +81,9 @@ export default function EmpresaPublicPage() {
 
       {/* Breadcrumb */}
       <div className="bg-white border-b">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-4">
+            <ol className="flex items-center space-x-2 sm:space-x-4 text-sm">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-gray-500">
                   Início
@@ -90,20 +91,20 @@ export default function EmpresaPublicPage() {
               </li>
               <li>
                 <div className="flex items-center">
-                  <svg className="flex-shrink-0 h-5 w-5 text-black" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                   </svg>
-                  <Link href="/clube-ouvintes" className="ml-4 text-gray-400 hover:text-gray-500">
+                  <Link href="/clube-ouvintes" className="ml-2 sm:ml-4 text-gray-400 hover:text-gray-500">
                     Clube Ouvintes
                   </Link>
                 </div>
               </li>
               <li>
                 <div className="flex items-center">
-                  <svg className="flex-shrink-0 h-5 w-5 text-black" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span className="ml-4 text-gray-500">{empresa.nome}</span>
+                  <span className="ml-2 sm:ml-4 text-gray-500 truncate">{empresa.nome}</span>
                 </div>
               </li>
             </ol>
@@ -111,46 +112,65 @@ export default function EmpresaPublicPage() {
         </div>
       </div>
 
-      {/* Empresa Header */}
-      <section className="bg-gradient-to-r from-bandfm-green-500 to-bandfm-green-600 text-white py-16">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Empresa Header - Fondo Naranja */}
+      <section className="bg-bandfm-orange-500 text-white py-4 sm:py-8 lg:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Botón Voltar */}
-          <div className="mb-8">
+          <div className="mb-3 sm:mb-6">
             <Link 
               href="/clube-ouvintes"
-              className="text-green-100 hover:text-white font-helvetica-black flex items-center transition-colors duration-200"
+              className="text-white hover:text-gray-100 font-bold flex items-center transition-colors duration-200 text-xs sm:text-sm lg:text-base"
             >
-              ← Voltar ao Clube Ouvintes
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Voltar ao Clube Ouvintes
             </Link>
           </div>
-          <div className="flex items-center space-x-8">
-            {empresa.foto && (
-              <div className="flex-shrink-0">
-                <img 
-                  src={empresa.foto} 
-                  alt={empresa.nome}
-                  className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
-                />
-              </div>
-            )}
-            <div className="flex-1">
-              <div className="flex items-center space-x-4 mb-4">
-                <h1 className="text-4xl font-bold">{empresa.nome}</h1>
-                <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-helvetica-black bg-bandfm-orange-500 text-white">
-                  {empresa.categoria}
-                </span>
-              </div>
-              <p className="text-xl text-green-100 mb-4">
-                {empresa.descricao}
-              </p>
-              <div className="flex items-center text-green-100">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                </svg>
-                <a href={`mailto:${empresa.email}`} className="hover:text-bandfm-orange-300 transition-colors">
-                  {empresa.email}
-                </a>
+
+          {/* Empresa Info */}
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
+            <div className="flex flex-col md:flex-row items-center md:items-start p-3 sm:p-6 lg:p-10">
+              {/* Foto da Empresa */}
+              {empresa.foto && (
+                <div className="flex-shrink-0 mb-3 sm:mb-6 md:mb-0 md:mr-8">
+                  <img 
+                    src={empresa.foto} 
+                    alt={empresa.nome}
+                    className="w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-xl sm:rounded-2xl object-cover shadow-lg border-2 sm:border-4 border-bandfm-orange-500"
+                  />
+                </div>
+              )}
+              
+              {/* Información */}
+              <div className="flex-1 text-center md:text-left w-full">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center md:justify-start sm:space-x-3 mb-2 sm:mb-4">
+                  <h1 className="text-lg sm:text-2xl lg:text-3xl font-black text-gray-900 mb-1 sm:mb-0 break-words">
+                    {empresa.nome}
+                  </h1>
+                  <span className="inline-flex items-center justify-center px-2.5 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold bg-bandfm-green-500 text-white shadow-md mx-auto sm:mx-0">
+                    {empresa.categoria}
+                  </span>
+                </div>
+                
+                <p className="text-xs sm:text-sm lg:text-base text-gray-700 mb-3 sm:mb-6 leading-relaxed px-2 sm:px-0 line-clamp-3">
+                  {empresa.descricao}
+                </p>
+                
+                <div className="flex flex-col items-center md:items-start">
+                  <a 
+                    href={`mailto:${empresa.email}`} 
+                    className="flex items-center text-gray-600 hover:text-bandfm-orange-500 transition-colors group"
+                  >
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-100 group-hover:bg-bandfm-orange-100 flex items-center justify-center mr-2 transition-colors flex-shrink-0">
+                      <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                      </svg>
+                    </div>
+                    <span className="font-medium text-xs sm:text-sm lg:text-base truncate max-w-[200px] sm:max-w-none">{empresa.email}</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -158,58 +178,96 @@ export default function EmpresaPublicPage() {
       </section>
 
       {/* Products Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-helvetica-black text-gray-900">
-              Nossos Produtos {produtos.length > 0 && `(${produtos.length})`}
+      <section className="py-6 sm:py-12 lg:py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-4 sm:mb-8 lg:mb-12">
+            <h2 className="text-lg sm:text-2xl lg:text-3xl font-black text-gray-900 mb-1 sm:mb-2">
+              Nossos Produtos
             </h2>
+            {produtos.length > 0 && (
+              <p className="text-gray-600 text-xs sm:text-sm lg:text-base">
+                {produtos.length} {produtos.length === 1 ? 'produto disponível' : 'produtos disponíveis'}
+              </p>
+            )}
           </div>
           
           {produtos.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
               {produtos.map((produto) => (
-                <div key={produto.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <img 
-                    src={produto.imagem} 
-                    alt={produto.nome} 
-                    className="w-full h-48 object-cover" 
-                  />
-                  <div className="p-6">
-                    <h3 className="text-lg font-helvetica-black text-gray-900 mb-2">
-                      {produto.nome}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3 text-sm">
-                      {produto.descricao}
-                    </p>
-                    <div className="flex justify-between items-center">
-                      <span className="text-2xl font-helvetica-black text-bandfm-green-500">
-                        R$ {produto.preco.toFixed(2)}
-                      </span>
-                      <span className="text-xs text-bandfm-green-500 bg-green-100 px-3 py-1 rounded-full font-medium">
+                <div 
+                  key={produto.id} 
+                  onClick={() => setSelectedImage(produto.imagem)}
+                  className="bg-white rounded-lg sm:rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer"
+                >
+                  {/* Imagen del Producto */}
+                  <div className="relative overflow-hidden bg-gray-100">
+                    <img 
+                      src={produto.imagem} 
+                      alt={produto.nome} 
+                      className="w-full h-40 sm:h-52 lg:h-56 object-cover hover:scale-105 transition-transform duration-300" 
+                    />
+                    <div className="absolute top-2 right-2">
+                      <span className="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold bg-bandfm-green-500 text-white shadow-lg">
                         ✓ Disponível
                       </span>
+                    </div>
+                    {/* Indicador de click */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-5 transition-all duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg className="w-8 h-8 sm:w-12 sm:h-12 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Info del Producto */}
+                  <div className="p-3 sm:p-4 lg:p-5">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-black text-gray-900 mb-1.5 sm:mb-2 line-clamp-2">
+                      {produto.nome}
+                    </h3>
+                    <p className="text-gray-600 mb-3 sm:mb-4 line-clamp-2 text-xs sm:text-sm leading-relaxed">
+                      {produto.descricao}
+                    </p>
+                    
+                    {/* Precio */}
+                    <div className="pt-2.5 sm:pt-3 border-t border-gray-100">
+                      <div className="flex items-center justify-between gap-2">
+                        <div>
+                          <p className="text-[10px] sm:text-xs text-gray-500 mb-0.5">Preço</p>
+                          <span className="text-lg sm:text-xl lg:text-2xl font-black text-bandfm-green-500">
+                            R$ {produto.preco.toFixed(2)}
+                          </span>
+                        </div>
+                        <div className="bg-bandfm-orange-500 text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md whitespace-nowrap flex items-center gap-1">
+                          <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                          Ver Foto
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-center py-16">
-              <div className="text-gray-400 mb-4">
-                <svg className="w-16 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            <div className="text-center py-12 sm:py-16 bg-white rounded-xl sm:rounded-2xl shadow-md px-4">
+              <div className="text-gray-300 mb-4 sm:mb-6">
+                <svg className="w-16 h-16 sm:w-20 sm:h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
               </div>
-              <h3 className="text-xl font-helvetica-black text-gray-900 mb-2">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 mb-2 sm:mb-3">
                 Nenhum produto disponível
               </h3>
-              <p className="text-gray-500 mb-6">
+              <p className="text-gray-500 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg px-4">
                 Esta empresa ainda não cadastrou produtos em nosso sistema.
               </p>
               <Link 
                 href="/clube-ouvintes"
-                className="bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-200"
+                className="inline-block bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full transition-colors duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base"
               >
                 Explorar outras empresas
               </Link>
@@ -218,9 +276,47 @@ export default function EmpresaPublicPage() {
         </div>
       </section>
 
+      {/* Modal de Imagen */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-7xl w-full h-full flex items-center justify-center">
+            {/* Botón Cerrar */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 bg-white hover:bg-gray-100 text-gray-900 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-200 group"
+              aria-label="Cerrar"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Imagen */}
+            <div 
+              className="relative max-h-full max-w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedImage}
+                alt="Produto em destaque"
+                className="max-h-[85vh] max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl"
+              />
+              
+              {/* Indicador de toque para cerrar */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-90 px-4 py-2 rounded-full text-xs sm:text-sm text-gray-700 font-medium shadow-lg">
+                Clique fora para fechar
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="bg-gray-100 text-black py-6">
-        <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-lg font-semibold mb-2 text-black">Band FM</h3>

@@ -95,6 +95,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/promocoes/page.js"
+    ],
+    "/clube-ouvintes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/clube-ouvintes/page.js"
+    ],
+    "/empresa/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/empresa/[id]/page.js"
     ]
   }
 }
