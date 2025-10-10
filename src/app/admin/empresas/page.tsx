@@ -138,8 +138,8 @@ export default function EmpresasPage() {
 
       {/* Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 px-4">
+          <div className="relative top-4 sm:top-20 mx-auto p-4 sm:p-5 border w-full max-w-md shadow-lg rounded-md bg-white my-8">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 {editingEmpresa ? 'Editar Empresa' : 'Nova Empresa'}
@@ -233,34 +233,34 @@ export default function EmpresasPage() {
             empresas.map((empresa) => (
               <li key={empresa.id}>
                 <div className="px-4 py-4 sm:px-6">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <div className="flex items-center">
                       {empresa.foto && (
                         <img 
                           src={empresa.foto} 
                           alt={empresa.nome}
-                          className="h-10 w-10 rounded-full mr-4 object-cover"
+                          className="h-10 w-10 rounded-full mr-4 object-cover flex-shrink-0"
                         />
                       )}
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <p className="text-sm font-medium text-indigo-600 truncate">
                           {empresa.nome}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs sm:text-sm text-gray-500 break-words">
                           {empresa.email} • {empresa.categoria}
                         </p>
                       </div>
                     </div>
-                    <div className="flex space-x-2">
+                    <div className="flex space-x-2 sm:flex-shrink-0">
                       <button
                         onClick={() => handleEdit(empresa)}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm"
+                        className="flex-1 sm:flex-none bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded text-sm font-medium"
                       >
                         Editar
                       </button>
                       <button
                         onClick={() => handleDelete(empresa.id)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
+                        className="flex-1 sm:flex-none bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded text-sm font-medium"
                       >
                         Excluir
                       </button>

@@ -173,10 +173,10 @@ export default function AdminPodcastsPage() {
 
   return (
     <AdminLayout title="Gestão de Podcasts">
-      <div className="mb-6 flex gap-4">
+      <div className="mb-6">
         <button
           onClick={() => setShowForm(true)}
-          className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md"
+          className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md"
         >
           Novo Podcast
         </button>
@@ -184,8 +184,8 @@ export default function AdminPodcastsPage() {
 
       {/* Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 px-4">
+          <div className="relative top-4 sm:top-10 mx-auto p-4 sm:p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white my-8">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 {editingPodcast ? 'Editar Podcast' : 'Novo Podcast'}
@@ -252,17 +252,17 @@ export default function AdminPodcastsPage() {
                     Podcast ativo
                   </label>
                 </div>
-                <div className="flex justify-end space-x-4">
+                <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-4">
                   <button
                     type="button"
                     onClick={resetForm}
-                    className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                    className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 font-medium"
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
+                    className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 font-medium"
                   >
                     {editingPodcast ? 'Salvar Alterações' : 'Criar Podcast'}
                   </button>
@@ -274,15 +274,15 @@ export default function AdminPodcastsPage() {
       )}
 
       {/* Podcasts List */}
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {podcasts.length === 0 && !loading ? (
-          <p className="text-center text-gray-500">Nenhum podcast encontrado.</p>
+          <p className="text-center text-gray-500 py-12">Nenhum podcast encontrado.</p>
         ) : (
           podcasts.map((podcast) => (
             <div key={podcast.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="md:flex">
+              <div className="flex flex-col md:flex-row">
                 {/* Podcast Image */}
-                <div className="md:w-1/4">
+                <div className="w-full md:w-1/4">
                   <img
                     src={podcast.imagem}
                     alt={podcast.titulo}
@@ -291,28 +291,26 @@ export default function AdminPodcastsPage() {
                 </div>
                 
                 {/* Podcast Content */}
-                <div className="md:w-3/4 p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{podcast.titulo}</h3>
-                      <p className="text-gray-600 mb-4 line-clamp-3">{podcast.descricao}</p>
-                      
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium mr-3 ${
-                          podcast.ativo 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-red-100 text-red-800'
-                        }`}>
-                          {podcast.ativo ? 'Ativo' : 'Inativo'}
-                        </span>
-                        <span>Criado em {new Date(podcast.createdAt).toLocaleDateString('pt-BR')}</span>
-                        {podcast.duracao && (
-                          <>
-                            <span className="mx-2">•</span>
-                            <span>{podcast.duracao}</span>
-                          </>
-                        )}
-                      </div>
+                <div className="w-full md:w-3/4 p-4 sm:p-6">
+                  <div className="mb-4">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{podcast.titulo}</h3>
+                    <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 line-clamp-3">{podcast.descricao}</p>
+                    
+                    <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        podcast.ativo 
+                          ? 'bg-green-100 text-green-800' 
+                          : 'bg-red-100 text-red-800'
+                      }`}>
+                        {podcast.ativo ? 'Ativo' : 'Inativo'}
+                      </span>
+                      <span className="hidden sm:inline">Criado em {new Date(podcast.createdAt).toLocaleDateString('pt-BR')}</span>
+                      {podcast.duracao && (
+                        <>
+                          <span className="hidden sm:inline mx-1">•</span>
+                          <span>{podcast.duracao}</span>
+                        </>
+                      )}
                     </div>
                   </div>
                   
@@ -326,10 +324,10 @@ export default function AdminPodcastsPage() {
                   </div>
                   
                   {/* Actions */}
-                  <div className="flex justify-between items-center">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <button
                       onClick={() => toggleActive(podcast)}
-                      className={`px-3 py-1 rounded text-sm font-medium ${
+                      className={`w-full sm:w-auto px-3 py-2 rounded text-sm font-medium ${
                         podcast.ativo 
                           ? 'bg-red-100 text-red-700 hover:bg-red-200' 
                           : 'bg-green-100 text-green-700 hover:bg-green-200'
@@ -337,16 +335,16 @@ export default function AdminPodcastsPage() {
                     >
                       {podcast.ativo ? 'Desativar' : 'Ativar'}
                     </button>
-                    <div className="flex space-x-2">
+                    <div className="flex gap-2">
                       <button
                         onClick={() => handleEdit(podcast)}
-                        className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded text-sm font-medium hover:bg-yellow-200"
+                        className="flex-1 sm:flex-none px-3 py-2 bg-yellow-100 text-yellow-700 rounded text-sm font-medium hover:bg-yellow-200"
                       >
                         Editar
                       </button>
                       <button
                         onClick={() => handleDelete(podcast.id)}
-                        className="px-3 py-1 bg-gray-100 text-gray-700 rounded text-sm font-medium hover:bg-gray-200"
+                        className="flex-1 sm:flex-none px-3 py-2 bg-gray-100 text-gray-700 rounded text-sm font-medium hover:bg-gray-200"
                       >
                         Excluir
                       </button>

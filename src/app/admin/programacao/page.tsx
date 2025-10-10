@@ -135,8 +135,8 @@ export default function ProgramacaoPage() {
 
       {/* Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 px-4">
+          <div className="relative top-4 sm:top-20 mx-auto p-4 sm:p-5 border w-full max-w-md shadow-lg rounded-md bg-white my-8">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 {editingProgramacao ? 'Editar Programação' : 'Nova Programação'}
@@ -210,23 +210,24 @@ export default function ProgramacaoPage() {
 
       {/* Programacao List */}
       <div className="bg-white shadow overflow-hidden sm:rounded-md">
-        <div className="overflow-x-auto">
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-purple-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Horário
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Programa
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Apresentador
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Dias
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Ações
                 </th>
               </tr>
@@ -235,19 +236,19 @@ export default function ProgramacaoPage() {
               {programacao.length > 0 ? (
                 programacao.map((programa) => (
                   <tr key={programa.id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {programa.horarios}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {programa.nomePrograma}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {programa.nomeApresentador}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {programa.diasSemana}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                    <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                       <button
                         onClick={() => handleEdit(programa)}
                         className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm"
@@ -272,6 +273,52 @@ export default function ProgramacaoPage() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden divide-y divide-gray-200">
+          {programacao.length > 0 ? (
+            programacao.map((programa) => (
+              <div key={programa.id} className="p-4 bg-white">
+                <div className="space-y-2">
+                  <div>
+                    <span className="text-xs font-medium text-gray-500">Horário:</span>
+                    <p className="text-sm font-medium text-gray-900">{programa.horarios}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium text-gray-500">Programa:</span>
+                    <p className="text-sm text-gray-900">{programa.nomePrograma}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium text-gray-500">Apresentador:</span>
+                    <p className="text-sm text-gray-900">{programa.nomeApresentador}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-medium text-gray-500">Dias:</span>
+                    <p className="text-sm text-gray-500">{programa.diasSemana}</p>
+                  </div>
+                  <div className="flex space-x-2 pt-2">
+                    <button
+                      onClick={() => handleEdit(programa)}
+                      className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded text-sm font-medium"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      onClick={() => handleDelete(programa.id)}
+                      className="flex-1 bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded text-sm font-medium"
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="p-6 text-center text-gray-500">
+              Nenhuma programação cadastrada ainda.
+            </div>
+          )}
         </div>
       </div>
     </AdminLayout>

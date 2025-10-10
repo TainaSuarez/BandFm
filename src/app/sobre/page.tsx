@@ -143,42 +143,42 @@ export default function SobrePage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+      <section className="py-20 bg-white border-t border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">
               Estamos Sempre no Ar
             </h2>
-            <p className="text-xl text-white opacity-90">
+            <p className="text-xl text-gray-600">
               Na Band FM, sempre tem alguém, ao vivo, conversando com você.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
-            {/* Rede Band FM */}
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
+            {/* Rede Band FM - Naranja */}
+            <div className="bg-orange-600 rounded-xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM15.657 6.343a1 1 0 011.414 0A9.972 9.972 0 0119 12a9.972 9.972 0 01-1.929 5.657 1 1 0 11-1.414-1.414A7.971 7.971 0 0017 12a7.971 7.971 0 00-1.343-4.243 1 1 0 010-1.414z" clipRule="evenodd"></path>
                   <path fillRule="evenodd" d="M13.828 7.172a1 1 0 011.414 0A5.983 5.983 0 0117 12a5.983 5.983 0 01-1.758 4.828 1 1 0 11-1.414-1.414A3.987 3.987 0 0015 12a3.987 3.987 0 00-1.172-2.828 1 1 0 010-1.414z" clipRule="evenodd"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Rede Band FM</h3>
-              <p className="text-white opacity-90">
+              <h3 className="text-xl font-bold mb-2 text-white">Rede Band FM</h3>
+              <p className="text-white">
                 24 horas no ar<br />
                 Via satélite em todo o Brasil
               </p>
             </div>
 
-            {/* Contato */}
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
+            {/* Contato - Verde */}
+            <div className="bg-green-600 rounded-xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
               <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-2">Fale Conosco</h3>
-              <div className="text-white opacity-90 space-y-1">
+              <h3 className="text-xl font-bold mb-2 text-white">Fale Conosco</h3>
+              <div className="text-white space-y-1">
                 <p>📞 +55 3242 4092</p>
                 <p>📱 +11 3743 1313</p>
                 <p className="text-sm mt-2">WhatsApp disponível</p>

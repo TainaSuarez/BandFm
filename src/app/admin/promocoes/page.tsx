@@ -120,8 +120,8 @@ export default function PromocoesPage() {
 
       {/* Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 px-4">
+          <div className="relative top-4 sm:top-20 mx-auto p-4 sm:p-5 border w-full max-w-md shadow-lg rounded-md bg-white my-8">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 {editingPromocao ? 'Editar Promoção' : 'Nova Promoção'}
@@ -177,34 +177,34 @@ export default function PromocoesPage() {
       )}
 
       {/* Promocoes List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {promocoes.length > 0 ? (
           promocoes.map((promocao) => (
             <div key={promocao.id} className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg overflow-hidden shadow-lg">
-              <div className="p-6 text-white">
-                <h3 className="text-xl font-bold mb-3">
+              <div className="p-4 sm:p-6 text-white">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
                   {promocao.titulo}
                 </h3>
-                <p className="text-lg mb-4">
+                <p className="text-base sm:text-lg mb-3 sm:mb-4">
                   {promocao.descricao}
                 </p>
                 {promocao.imagem && (
                   <img 
                     src={promocao.imagem} 
                     alt={promocao.titulo}
-                    className="w-full h-32 object-cover rounded mb-4"
+                    className="w-full h-32 object-cover rounded mb-3 sm:mb-4"
                   />
                 )}
-                <div className="flex justify-end space-x-2">
+                <div className="flex gap-2">
                   <button
                     onClick={() => handleEdit(promocao)}
-                    className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded text-sm"
+                    className="flex-1 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-2 rounded text-sm font-medium"
                   >
                     Editar
                   </button>
                   <button
                     onClick={() => handleDelete(promocao.id)}
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm"
+                    className="flex-1 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-sm font-medium"
                   >
                     Excluir
                   </button>
@@ -213,7 +213,7 @@ export default function PromocoesPage() {
             </div>
           ))
         ) : (
-          <div className="col-span-2 text-center text-gray-500 py-12">
+          <div className="col-span-full text-center text-gray-500 py-12">
             Nenhuma promoção ativa no momento.
           </div>
         )}

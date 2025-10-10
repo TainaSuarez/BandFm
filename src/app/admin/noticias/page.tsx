@@ -123,8 +123,8 @@ export default function NoticiasPage() {
 
       {/* Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 px-4">
+          <div className="relative top-4 sm:top-20 mx-auto p-4 sm:p-5 border w-full max-w-md shadow-lg rounded-md bg-white my-8">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 {editingNoticia ? 'Editar Notícia' : 'Nova Notícia'}
@@ -190,7 +190,7 @@ export default function NoticiasPage() {
       )}
 
       {/* Noticias List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {noticias.length > 0 ? (
           noticias.map((noticia) => (
             <div key={noticia.id} className="bg-white overflow-hidden shadow rounded-lg">
@@ -198,35 +198,35 @@ export default function NoticiasPage() {
                 <img 
                   src={noticia.imagem} 
                   alt={noticia.titulo}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-40 sm:h-48 object-cover"
                 />
               )}
-              <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <div className="px-4 py-4 sm:py-5 sm:p-6">
+                <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
                   {noticia.titulo}
                 </h3>
                 <p className="text-sm text-gray-600 mb-4 line-clamp-3">
                   {noticia.descricao}
                 </p>
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                   <a 
                     href={noticia.fonte} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-green-600 hover:text-green-800 text-sm"
+                    className="text-green-600 hover:text-green-800 text-sm font-medium"
                   >
                     Ver fonte →
                   </a>
-                  <div className="flex space-x-2">
+                  <div className="flex gap-2">
                     <button
                       onClick={() => handleEdit(noticia)}
-                      className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm"
+                      className="flex-1 sm:flex-none bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded text-sm font-medium"
                     >
                       Editar
                     </button>
                     <button
                       onClick={() => handleDelete(noticia.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
+                      className="flex-1 sm:flex-none bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded text-sm font-medium"
                     >
                       Excluir
                     </button>
@@ -236,7 +236,7 @@ export default function NoticiasPage() {
             </div>
           ))
         ) : (
-          <div className="col-span-3 text-center text-gray-500 py-12">
+          <div className="col-span-full text-center text-gray-500 py-12">
             Nenhuma notícia publicada ainda.
           </div>
         )}

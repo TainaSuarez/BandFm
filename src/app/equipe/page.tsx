@@ -92,36 +92,32 @@ export default function EquipePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             {teamMembers.map((member, index) => (
               <div key={member.id} className="group">
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
-                  {/* Header with gradient based on index */}
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-gray-100">
+                  {/* Header alternando naranja y verde */}
                   <div className={`h-32 relative ${
-                    index === 0 ? 'bg-gradient-to-br from-pink-400 to-red-500' :
-                    index === 1 ? 'bg-gradient-to-br from-purple-400 to-indigo-500' :
-                    index === 2 ? 'bg-gradient-to-br from-blue-400 to-cyan-500' :
-                    'bg-gradient-to-br from-green-400 to-teal-500'
+                    index % 2 === 0 ? 'bg-orange-600' : 'bg-green-600'
                   }`}>
-                    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
                     <div className="absolute bottom-4 left-6 right-6">
                       <div className="flex items-center space-x-3">
                         <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2">
-                          <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM15.657 6.343a1 1 0 011.414 0A9.972 9.972 0 0119 12a9.972 9.972 0 01-1.929 5.657 1 1 0 11-1.414-1.414A7.971 7.971 0 0017 12a7.971 7.971 0 00-1.343-4.243 1 1 0 010-1.414z" clipRule="evenodd"></path>
                           </svg>
                         </div>
-                        <span className="text-black text-sm font-helvetica-black bg-white bg-opacity-20 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <span className="text-white text-sm font-helvetica-black bg-white bg-opacity-20 backdrop-blur-sm px-3 py-1 rounded-full">
                           {member.cargo}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Profile Image */}
+                  {/* Profile Image - Logo de Band FM */}
                   <div className="relative -mt-16 flex justify-center">
-                    <div className="w-24 h-24 bg-white rounded-full shadow-lg border-4 border-white overflow-hidden">
+                    <div className="w-28 h-28 bg-white rounded-full shadow-xl border-4 border-white overflow-hidden p-2">
                       <img 
-                        src="https://i.imgur.com/ZYqQhXm.png" 
+                        src="/logo-bandfm.png" 
                         alt={member.nome}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                   </div>
@@ -142,10 +138,7 @@ export default function EquipePage() {
                       <div className="bg-gray-50 rounded-xl p-4">
                         <div className="flex items-center mb-3">
                           <div className={`w-3 h-3 rounded-full mr-3 ${
-                            index === 0 ? 'bg-pink-500' :
-                            index === 1 ? 'bg-purple-500' :
-                            index === 2 ? 'bg-blue-500' :
-                            'bg-green-500'
+                            index % 2 === 0 ? 'bg-orange-600' : 'bg-green-600'
                           }`}></div>
                           <h4 className="font-semibold text-gray-900 text-lg">
                             {member.programa}

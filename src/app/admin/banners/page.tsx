@@ -170,7 +170,7 @@ export default function BannersPage() {
 
   return (
     <AdminLayout title="Gestão de Banners">
-      <div className="mb-6 flex gap-4">
+      <div className="mb-6 flex flex-col sm:flex-row gap-2 sm:gap-4">
         <button
           onClick={() => setShowForm(true)}
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md"
@@ -195,8 +195,8 @@ export default function BannersPage() {
 
       {/* Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 px-4">
+          <div className="relative top-4 sm:top-20 mx-auto p-4 sm:p-5 border w-full max-w-md shadow-lg rounded-md bg-white my-8">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 {editingBanner ? 'Editar Banner' : 'Novo Banner'}
@@ -254,7 +254,7 @@ export default function BannersPage() {
       )}
 
       {/* Banners List */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {banners.length > 0 ? (
           banners.map((banner) => (
             <div key={banner.id} className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -262,9 +262,9 @@ export default function BannersPage() {
                 <img 
                   src={banner.imagem} 
                   alt={banner.titulo}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-40 sm:h-48 object-cover"
                 />
-                <div className="absolute top-2 right-2 flex space-x-2">
+                <div className="absolute top-2 right-2 flex flex-col sm:flex-row gap-2">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     banner.ativo 
                       ? 'bg-green-100 text-green-800' 
@@ -272,19 +272,19 @@ export default function BannersPage() {
                   }`}>
                     {banner.ativo ? 'Ativo' : 'Inativo'}
                   </span>
-                  <span className="bg-blue-100 text-bandfm-green-600 px-2 py-1 rounded-full text-xs font-medium">
+                  <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">
                     #{banner.ordem}
                   </span>
                 </div>
               </div>
-              <div className="p-4">
-                <p className="text-sm text-gray-600 mb-4">
-                  Banner #{banner.ordem} - {banner.ativo ? 'Ativo' : 'Inativo'}
+              <div className="p-3 sm:p-4">
+                <p className="text-sm text-gray-600 mb-3 sm:mb-4">
+                  Banner #{banner.ordem}
                 </p>
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                   <button
                     onClick={() => toggleActive(banner)}
-                    className={`px-3 py-1 rounded text-sm font-medium ${
+                    className={`w-full sm:w-auto px-3 py-2 rounded text-sm font-medium ${
                       banner.ativo 
                         ? 'bg-red-100 text-red-700 hover:bg-red-200' 
                         : 'bg-green-100 text-green-700 hover:bg-green-200'
@@ -292,16 +292,16 @@ export default function BannersPage() {
                   >
                     {banner.ativo ? 'Desativar' : 'Ativar'}
                   </button>
-                  <div className="flex space-x-2">
+                  <div className="flex gap-2">
                     <button
                       onClick={() => handleEdit(banner)}
-                      className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm"
+                      className="flex-1 sm:flex-none bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded text-sm font-medium"
                     >
                       Editar
                     </button>
                     <button
                       onClick={() => handleDelete(banner.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
+                      className="flex-1 sm:flex-none bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded text-sm font-medium"
                     >
                       Excluir
                     </button>
@@ -311,7 +311,7 @@ export default function BannersPage() {
             </div>
           ))
         ) : (
-          <div className="col-span-3 text-center text-gray-500 py-12">
+          <div className="col-span-full text-center text-gray-500 py-12">
             Nenhum banner criado ainda.
           </div>
         )}

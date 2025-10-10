@@ -198,13 +198,13 @@ export default function AdminDashboard() {
       {/* Ações rápidas */}
       <div className="bg-white shadow rounded-lg">
         <div className="px-4 py-5 sm:p-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">
+          <h3 className="text-base sm:text-lg leading-6 font-medium text-gray-900 mb-4">
             Ações Rápidas
           </h3>
-          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Link
               href="/admin/empresas"
-              className="bg-blue-50 border border-blue-200 rounded-lg p-4 hover:bg-blue-100 transition-colors"
+              className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4 hover:bg-blue-100 transition-colors"
             >
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -224,7 +224,7 @@ export default function AdminDashboard() {
 
             <Link
               href="/admin/noticias"
-              className="bg-green-50 border border-green-200 rounded-lg p-4 hover:bg-green-100 transition-colors"
+              className="bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4 hover:bg-green-100 transition-colors"
             >
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -244,7 +244,7 @@ export default function AdminDashboard() {
 
             <Link
               href="/admin/promocoes"
-              className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 hover:bg-yellow-100 transition-colors"
+              className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4 hover:bg-yellow-100 transition-colors"
             >
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -264,7 +264,7 @@ export default function AdminDashboard() {
 
             <Link
               href="/admin/programacao"
-              className="bg-purple-50 border border-purple-200 rounded-lg p-4 hover:bg-purple-100 transition-colors"
+              className="bg-purple-50 border border-purple-200 rounded-lg p-3 sm:p-4 hover:bg-purple-100 transition-colors"
             >
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -284,7 +284,7 @@ export default function AdminDashboard() {
 
             <Link
               href="/admin/banners"
-              className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 hover:bg-indigo-100 transition-colors"
+              className="bg-indigo-50 border border-indigo-200 rounded-lg p-3 sm:p-4 hover:bg-indigo-100 transition-colors"
             >
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -297,6 +297,26 @@ export default function AdminDashboard() {
                 <div className="ml-3">
                   <p className="text-sm font-medium text-indigo-900">
                     Novo Banner
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/admin/podcasts"
+              className="bg-pink-50 border border-pink-200 rounded-lg p-3 sm:p-4 hover:bg-pink-100 transition-colors"
+            >
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-pink-500 rounded-md flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-3">
+                  <p className="text-sm font-medium text-pink-900">
+                    Novo Podcast
                   </p>
                 </div>
               </div>
