@@ -113,15 +113,15 @@ export default function EmpresaPublicPage() {
       </div>
 
       {/* Empresa Header - Fondo Naranja */}
-      <section className="bg-bandfm-orange-500 text-white py-4 sm:py-8 lg:py-12">
+      <section className="bg-bandfm-orange-500 text-white py-6 sm:py-8 lg:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Botón Voltar */}
-          <div className="mb-3 sm:mb-6">
+          <div className="mb-4 sm:mb-6">
             <Link 
               href="/clube-ouvintes"
-              className="text-white hover:text-gray-100 font-bold flex items-center transition-colors duration-200 text-xs sm:text-sm lg:text-base"
+              className="text-white hover:text-gray-100 font-bold flex items-center transition-colors duration-200 text-sm sm:text-base"
             >
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Voltar ao Clube Ouvintes
@@ -130,32 +130,33 @@ export default function EmpresaPublicPage() {
 
           {/* Empresa Info */}
           <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center md:items-start p-3 sm:p-6 lg:p-10">
+            <div className="flex flex-col md:flex-row items-center md:items-start p-6 sm:p-8 lg:p-10 gap-6">
               {/* Foto da Empresa */}
               {empresa.foto && (
-                <div className="flex-shrink-0 mb-3 sm:mb-6 md:mb-0 md:mr-8">
+                <div className="flex-shrink-0">
                   <img 
                     src={empresa.foto} 
                     alt={empresa.nome}
-                    className="w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-xl sm:rounded-2xl object-cover shadow-lg border-2 sm:border-4 border-bandfm-orange-500"
+                    className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-xl sm:rounded-2xl object-cover shadow-lg border-3 sm:border-4 border-bandfm-orange-500"
                   />
                 </div>
               )}
               
               {/* Información */}
               <div className="flex-1 text-center md:text-left w-full">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center md:justify-start sm:space-x-3 mb-2 sm:mb-3">
-                  <h1 className="text-lg sm:text-2xl lg:text-3xl font-black text-gray-900 mb-1 sm:mb-0 break-words">
+                {/* Nombre y Categoría */}
+                <div className="flex flex-col md:flex-row md:items-center md:justify-start gap-3 mb-4">
+                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900 break-words">
                     {empresa.nome}
                   </h1>
-                  <span className="inline-flex items-center justify-center px-2.5 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold bg-bandfm-green-500 text-white shadow-md mx-auto sm:mx-0">
+                  <span className="inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 rounded-full text-sm sm:text-base font-bold bg-bandfm-green-500 text-white shadow-md mx-auto md:mx-0 w-fit">
                     {empresa.categoria}
                   </span>
                 </div>
                 
                 {/* Descripción de la Empresa */}
-                <div className="mb-4 sm:mb-5">
-                  <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed px-2 sm:px-0">
+                <div className="mb-5 sm:mb-6">
+                  <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed">
                     {empresa.descricao}
                   </p>
                 </div>
@@ -166,13 +167,13 @@ export default function EmpresaPublicPage() {
                     href={`mailto:${empresa.email}`} 
                     className="flex items-center text-gray-600 hover:text-bandfm-orange-500 transition-colors group"
                   >
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-100 group-hover:bg-bandfm-orange-100 flex items-center justify-center mr-2 transition-colors flex-shrink-0">
-                      <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 group-hover:bg-bandfm-orange-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                       </svg>
                     </div>
-                    <span className="font-medium text-xs sm:text-sm lg:text-base truncate max-w-[200px] sm:max-w-none">{empresa.email}</span>
+                    <span className="font-medium text-sm sm:text-base break-all">{empresa.email}</span>
                   </a>
                 </div>
               </div>

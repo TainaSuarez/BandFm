@@ -2,14 +2,20 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import LoginDropdown from '@/components/LoginDropdown'
 import BandFMLogo from '@/components/BandFMLogo'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export default function SiteNavbar() {
+  const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
+  
+  // No mostrar WhatsApp button en páginas de empresa individual
+  const showWhatsAppButton = !pathname?.startsWith('/empresa/')
   
   useEffect(() => {
     const audio = audioRef.current
@@ -55,6 +61,8 @@ export default function SiteNavbar() {
       setIsPlaying(false)
     } else {
       setIsLoading(true)
+      // Recargar el audio antes de reproducir para asegurar conexión fresca
+      audioRef.current.load()
       audioRef.current.play()
         .then(() => {
           setIsPlaying(true)
@@ -62,6 +70,7 @@ export default function SiteNavbar() {
         })
         .catch((error) => {
           console.error('Error al reproducir:', error)
+          alert('No se pudo conectar con el streaming. Por favor, intente nuevamente.')
           setIsPlaying(false)
           setIsLoading(false)
         })
@@ -238,11 +247,15 @@ export default function SiteNavbar() {
       {/* Elemento de audio oculto */}
       <audio 
         ref={audioRef}
-        preload="none"
+        preload="metadata"
         className="hidden"
       >
-        <source src="https://playerservices.streamtheworld.com/api/livestream-redirect/BANDFM_SPAAC" type="audio/mpeg" />
+        <source src="https://stm28.xcast.com.br:11364/stream" type="audio/mpeg" />
+        <source src="https://stm28.xcast.com.br:11364/stream" type="audio/aac" />
       </audio>
+
+      {/* WhatsApp Button - No mostrar en páginas de empresa */}
+      {showWhatsAppButton && <WhatsAppButton />}
     </nav>
   )
 }

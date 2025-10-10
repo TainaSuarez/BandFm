@@ -20,13 +20,13 @@ export default function EmpresaLayout({ children, title }: EmpresaLayoutProps) {
     <div className="min-h-screen bg-gray-50">
       {/* Navigation - Header Blanco con Verde y Naranja */}
       <nav className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between h-20">
-            <div className="flex items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-12">
+          <div className="flex justify-between items-center h-16 sm:h-20 gap-2 sm:gap-4">
+            <div className="flex items-center min-w-0 flex-shrink">
               {/* Logo simple sin degradado */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 min-w-0">
                 <Link href="/empresa" className="flex items-center gap-2 group">
-                  <span className="text-2xl font-black text-orange-600">
+                  <span className="text-base sm:text-xl lg:text-2xl font-black text-orange-600 truncate">
                     Painel Empresa
                   </span>
                 </Link>
@@ -67,19 +67,20 @@ export default function EmpresaLayout({ children, title }: EmpresaLayoutProps) {
             </div>
             
             {/* Botones de acción */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-1.5 sm:space-x-3 flex-shrink-0">
               <Link
                 href="/"
-                className="text-orange-600 hover:bg-orange-50 px-4 py-2 rounded-lg text-sm font-bold transition-all border-2 border-orange-200 hover:border-orange-400 flex items-center gap-2"
+                className="text-orange-600 hover:bg-orange-50 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all border-2 border-orange-200 hover:border-orange-400 flex items-center gap-1 sm:gap-2"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
-                Ver Site
+                <span className="hidden sm:inline">Ver Site</span>
+                <span className="sm:hidden">Site</span>
               </Link>
               <button
                 onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                className="bg-red-600 hover:bg-red-700 text-white px-2 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-1 sm:gap-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -92,11 +93,11 @@ export default function EmpresaLayout({ children, title }: EmpresaLayoutProps) {
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
+      <main className="max-w-7xl mx-auto py-4 sm:py-6 px-3 sm:px-6 lg:px-8">
+        <div className="py-4 sm:py-6">
           {/* Título mejorado */}
-          <div className="mb-8 pb-4 border-b-2 border-gray-200">
-            <h1 className="text-4xl font-black text-green-600">{title}</h1>
+          <div className="mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 border-gray-200">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-green-600">{title}</h1>
           </div>
           {children}
         </div>
