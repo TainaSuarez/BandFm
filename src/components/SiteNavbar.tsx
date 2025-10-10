@@ -74,7 +74,7 @@ export default function SiteNavbar() {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-6">
             <div className="flex-shrink-0">
-              <Link href="/">
+              <Link href="/" className="cursor-pointer hover:opacity-80 transition-opacity">
                 <BandFMLogo size="sm" showFrequency={false} className="" />
               </Link>
             </div>

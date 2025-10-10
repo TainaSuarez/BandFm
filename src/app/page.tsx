@@ -6,6 +6,7 @@ import { Noticia, Promocao, Banner } from '@/types'
 import BannerCarousel from '@/components/BannerCarousel'
 
 import SiteNavbar from '@/components/SiteNavbar'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export default function HomePage() {
   const [noticias, setNoticias] = useState<Noticia[]>([])
@@ -162,6 +163,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
+
       {/* Footer */}
       <footer className="bg-gray-100 text-black py-6">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -176,7 +180,7 @@ export default function HomePage() {
               <h3 className="text-lg font-semibold mb-2 text-black">Contato</h3>
               <p className="text-black text-sm">Email: bandfm@bandfmfronteira.com.br</p>
               <p className="text-black text-sm">Telefone: +55 3242 4092</p>
-              <p className="text-black text-sm">WhatsApp: +11 3743 1313</p>
+              <p className="text-black text-sm">WhatsApp: +55 55 3242-4092</p>
             </div>
           </div>
           <div className="border-t border-gray-300 mt-4 pt-4 text-center">

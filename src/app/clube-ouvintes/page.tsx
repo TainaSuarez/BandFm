@@ -89,44 +89,41 @@ export default function ClubeOuvintesPage() {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {filteredEmpresas.length > 0 ? (
                 filteredEmpresas.map((empresa) => (
-                  <div key={empresa.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                  <div key={empresa.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     {empresa.foto && (
                       <img 
                         src={empresa.foto} 
                         alt={empresa.nome}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-44 sm:h-48 object-cover"
                       />
                     )}
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-semibold text-gray-900">
+                    <div className="p-4 sm:p-5 lg:p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3 sm:mb-4">
+                        <h3 className="text-lg sm:text-xl font-black text-gray-900">
                           {empresa.nome}
                         </h3>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-helvetica-black bg-bandfm-green-100 text-bandfm-green-600">
+                        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-bandfm-green-500 text-white shadow-sm w-fit">
                           {empresa.categoria}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {empresa.descricao}
-                      </p>
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
-                        <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      
+                      <div className="flex items-center text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
+                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                           <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                         </svg>
-                        {empresa.email}
+                        <span className="truncate">{empresa.email}</span>
                       </div>
-                      <div className="flex justify-center">
-                        <Link
-                          href={`/empresa/${empresa.id}`}
-                          className="bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-semibold py-2 px-6 rounded-full transition-colors duration-200"
-                        >
-                          Ver Produtos
-                        </Link>
-                      </div>
+                      
+                      <Link
+                        href={`/empresa/${empresa.id}`}
+                        className="block w-full bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-bold py-2.5 sm:py-3 px-6 rounded-full transition-all duration-200 text-center shadow-md hover:shadow-lg text-sm sm:text-base"
+                      >
+                        Ver Produtos
+                      </Link>
                     </div>
                   </div>
                 ))
