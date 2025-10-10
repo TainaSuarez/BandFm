@@ -1,14 +1,10 @@
 {
-  "/api/produtos/route": "app/api/produtos/route.js",
-  "/api/empresas/[id]/route": "app/api/empresas/[id]/route.js",
   "/api/noticias/route": "app/api/noticias/route.js",
-  "/api/promocoes/route": "app/api/promocoes/route.js",
   "/api/banners/route": "app/api/banners/route.js",
-  "/api/noticias/[id]/route": "app/api/noticias/[id]/route.js",
-  "/empresa/[id]/page": "app/empresa/[id]/page.js",
-  "/login/page": "app/login/page.js",
+  "/api/promocoes/route": "app/api/promocoes/route.js",
+  "/empresa/perfil/page": "app/empresa/perfil/page.js",
+  "/empresa/page": "app/empresa/page.js",
   "/page": "app/page.js",
-  "/equipe/page": "app/equipe/page.js",
-  "/noticias/page": "app/noticias/page.js",
-  "/noticias/[id]/page": "app/noticias/[id]/page.js"
+  "/login-empresa/page": "app/login-empresa/page.js",
+  "/login/page": "app/login/page.js"
 }

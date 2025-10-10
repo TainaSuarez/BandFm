@@ -46,10 +46,45 @@
     overflow: hidden;
   }
 
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+}
+
+@layer utilities {
+  /* Animación de fade in para modales */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Gradientes personalizados */
+  .bg-gradient-orange-green {
+    background: linear-gradient(135deg, #f97316 0%, #22c55e 100%);
+  }
+
+  .text-gradient-orange-green {
+    background: linear-gradient(135deg, #f97316 0%, #22c55e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

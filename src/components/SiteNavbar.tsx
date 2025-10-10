@@ -1,12 +1,72 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import LoginDropdown from '@/components/LoginDropdown'
 import BandFMLogo from '@/components/BandFMLogo'
 
 export default function SiteNavbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
+  
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+    
+    // Configurar volumen inicial
+    audio.volume = 0.7
+    
+    const handlePlaying = () => {
+      setIsPlaying(true)
+      setIsLoading(false)
+    }
+    
+    const handlePause = () => {
+      setIsPlaying(false)
+      setIsLoading(false)
+    }
+    
+    const handleError = () => {
+      setIsPlaying(false)
+      setIsLoading(false)
+    }
+    
+    audio.addEventListener('playing', handlePlaying)
+    audio.addEventListener('pause', handlePause)
+    audio.addEventListener('error', handleError)
+    
+    return () => {
+      audio.removeEventListener('playing', handlePlaying)
+      audio.removeEventListener('pause', handlePause)
+      audio.removeEventListener('error', handleError)
+    }
+  }, [])
+  
+  const togglePlay = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
+    if (!audioRef.current || isLoading) return
+    
+    if (isPlaying) {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    } else {
+      setIsLoading(true)
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true)
+          setIsLoading(false)
+        })
+        .catch((error) => {
+          console.error('Error al reproducir:', error)
+          setIsPlaying(false)
+          setIsLoading(false)
+        })
+    }
+  }
 
   return (
     <nav className="bg-white shadow-lg border-b border-gray-200">
@@ -22,10 +82,25 @@ export default function SiteNavbar() {
             {/* Reproductor de Radio Ficticio */}
             <div className="hidden lg:flex items-center bg-bandfm-green-500 rounded-full px-4 py-2 gap-3 shadow-md">
               {/* Botón Play/Pause */}
-              <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
-                <svg className="w-5 h-5 text-bandfm-green-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
+              <button 
+                onClick={togglePlay}
+                disabled={isLoading}
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50"
+              >
+                {isLoading ? (
+                  <svg className="w-5 h-5 text-bandfm-green-600 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : isPlaying ? (
+                  <svg className="w-5 h-5 text-bandfm-green-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5 text-bandfm-green-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                )}
               </button>
               
               {/* Texto "AO VIVO" */}
@@ -36,11 +111,11 @@ export default function SiteNavbar() {
               
               {/* Indicador de ondas sonoras */}
               <div className="flex items-center gap-1">
-                <div className="w-1 bg-white h-3 rounded-full opacity-60"></div>
-                <div className="w-1 bg-white h-5 rounded-full opacity-80"></div>
-                <div className="w-1 bg-white h-4 rounded-full opacity-70"></div>
-                <div className="w-1 bg-white h-6 rounded-full"></div>
-                <div className="w-1 bg-white h-3 rounded-full opacity-60"></div>
+                <div className={`w-1 bg-white h-3 rounded-full opacity-60 ${isPlaying ? 'animate-pulse' : ''}`}></div>
+                <div className={`w-1 bg-white h-5 rounded-full opacity-80 ${isPlaying ? 'animate-pulse' : ''}`} style={{animationDelay: '0.1s'}}></div>
+                <div className={`w-1 bg-white h-4 rounded-full opacity-70 ${isPlaying ? 'animate-pulse' : ''}`} style={{animationDelay: '0.2s'}}></div>
+                <div className={`w-1 bg-white h-6 rounded-full ${isPlaying ? 'animate-pulse' : ''}`} style={{animationDelay: '0.3s'}}></div>
+                <div className={`w-1 bg-white h-3 rounded-full opacity-60 ${isPlaying ? 'animate-pulse' : ''}`} style={{animationDelay: '0.4s'}}></div>
               </div>
               
               {/* Control de volumen */}
@@ -87,10 +162,25 @@ export default function SiteNavbar() {
           <div className="md:hidden flex items-center gap-2">
             {/* Reproductor mobile */}
             <div className="lg:hidden flex items-center bg-bandfm-green-500 rounded-full px-3 py-2 gap-2 shadow-md">
-              <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-bandfm-green-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
+              <button 
+                onClick={togglePlay}
+                disabled={isLoading}
+                className="w-8 h-8 bg-white rounded-full flex items-center justify-center disabled:opacity-50"
+              >
+                {isLoading ? (
+                  <svg className="w-4 h-4 text-bandfm-green-600 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : isPlaying ? (
+                  <svg className="w-4 h-4 text-bandfm-green-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4 text-bandfm-green-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                )}
               </button>
               <span className="text-white text-xs font-bold">AO VIVO</span>
             </div>
@@ -144,6 +234,15 @@ export default function SiteNavbar() {
           </div>
         )}
       </div>
+      
+      {/* Elemento de audio oculto */}
+      <audio 
+        ref={audioRef}
+        preload="none"
+        className="hidden"
+      >
+        <source src="https://playerservices.streamtheworld.com/api/livestream-redirect/BANDFM_SPAAC" type="audio/mpeg" />
+      </audio>
     </nav>
   )
 }
