@@ -15,7 +15,14 @@ export async function GET(
       )
     }
 
-    return NextResponse.json(promocao)
+    // Convertir fechas a strings ISO
+    const promocaoSerializada = {
+      ...promocao,
+      createdAt: promocao.createdAt instanceof Date ? promocao.createdAt.toISOString() : promocao.createdAt,
+      updatedAt: promocao.updatedAt instanceof Date ? promocao.updatedAt.toISOString() : promocao.updatedAt
+    }
+
+    return NextResponse.json(promocaoSerializada)
   } catch (error) {
     console.error('Error getting promocao:', error)
     return NextResponse.json(
@@ -41,9 +48,16 @@ export async function PUT(
       )
     }
 
+    // Convertir fechas a strings ISO
+    const promocaoSerializada = {
+      ...promocao,
+      createdAt: promocao.createdAt instanceof Date ? promocao.createdAt.toISOString() : promocao.createdAt,
+      updatedAt: promocao.updatedAt instanceof Date ? promocao.updatedAt.toISOString() : promocao.updatedAt
+    }
+
     return NextResponse.json({
       message: 'Promoção atualizada com sucesso',
-      promocao
+      promocao: promocaoSerializada
     })
   } catch (error) {
     console.error('Error updating promocao:', error)

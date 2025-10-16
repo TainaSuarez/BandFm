@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { AdminController } from '@/controllers/adminController'
+import { adminController } from '@/controllers/adminController'
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const admin = await AdminController.login({ email, password })
+    const admin = await adminController.login({ email, password })
 
     if (!admin) {
       return NextResponse.json(
@@ -28,10 +28,10 @@ export async function POST(request: NextRequest) {
       message: 'Login realizado com sucesso',
       admin: adminData
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Login error:', error)
     return NextResponse.json(
-      { message: 'Erro interno do servidor' },
+      { message: error.message || 'Erro interno do servidor' },
       { status: 500 }
     )
   }

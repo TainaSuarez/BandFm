@@ -7,7 +7,7 @@ interface FileUploadProps {
   label: string
   currentUrl?: string
   onUpload: (url: string) => void
-  type?: 'image' | 'audio'
+  type?: 'image' | 'audio' | 'video'
   maxSize?: number // em MB
 }
 
@@ -134,6 +134,10 @@ export default function FileUpload({
                 <svg className="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 48 48">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" />
                 </svg>
+              ) : type === 'video' ? (
+                <svg className="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 48 48">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
               ) : (
                 <svg className="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 48 48">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6a2 2 0 012-2h8.172a2 2 0 011.414.586L22 6h8a2 2 0 012 2v13M9 19v6a2 2 0 002 2h8m-10-8h10m0 0V9a2 2 0 012-2h2m-4 12v6m0 0v2a2 2 0 002 2h2m-4-4h4" />
@@ -161,6 +165,15 @@ export default function FileUpload({
             <img 
               src={currentUrl} 
               alt="Preview" 
+              className="w-full max-w-xs h-32 object-cover rounded border"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none'
+              }}
+            />
+          ) : type === 'video' ? (
+            <video 
+              src={currentUrl} 
+              controls 
               className="w-full max-w-xs h-32 object-cover rounded border"
               onError={(e) => {
                 e.currentTarget.style.display = 'none'

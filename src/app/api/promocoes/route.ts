@@ -4,7 +4,15 @@ import { PromocaoController } from '@/controllers/promocaoController'
 export async function GET() {
   try {
     const promocoes = await PromocaoController.getAllPromocoes()
-    return NextResponse.json(promocoes)
+    
+    // Convertir fechas a strings ISO para evitar problemas de serialización
+    const promocoesSerializadas = promocoes.map(promocao => ({
+      ...promocao,
+      createdAt: promocao.createdAt instanceof Date ? promocao.createdAt.toISOString() : promocao.createdAt,
+      updatedAt: promocao.updatedAt instanceof Date ? promocao.updatedAt.toISOString() : promocao.updatedAt
+    }))
+    
+    return NextResponse.json(promocoesSerializadas)
   } catch (error) {
     console.error('Error getting promocoes:', error)
     return NextResponse.json(
@@ -40,9 +48,16 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Convertir fechas a strings ISO
+    const promocaoSerializada = {
+      ...promocao,
+      createdAt: promocao.createdAt instanceof Date ? promocao.createdAt.toISOString() : promocao.createdAt,
+      updatedAt: promocao.updatedAt instanceof Date ? promocao.updatedAt.toISOString() : promocao.updatedAt
+    }
+
     return NextResponse.json({
       message: 'Promoção criada com sucesso',
-      promocao
+      promocao: promocaoSerializada
     }, { status: 201 })
   } catch (error) {
     console.error('Error creating promocao:', error)

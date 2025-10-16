@@ -147,7 +147,25 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
                   Banners
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/admin/galeria"
+                  onClick={() => setSidebarOpen(false)}
+                  className="block px-4 py-2 text-black font-bold hover:bg-orange-500 hover:text-white rounded-md transition-colors"
+                >
+                  Galeria
+                </Link>
+              </li>
               <li className="pt-4 border-t border-gray-200">
+                <Link
+                  href="/admin/administradores"
+                  onClick={() => setSidebarOpen(false)}
+                  className="block px-4 py-2 text-black font-bold hover:bg-orange-500 hover:text-white rounded-md transition-colors"
+                >
+                  👥 Administradores
+                </Link>
+              </li>
+              <li className="border-t border-gray-200">
                 <Link
                   href="/"
                   onClick={() => setSidebarOpen(false)}

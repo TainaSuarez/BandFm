@@ -36,6 +36,17 @@ export default function ProgramacaoPage() {
     }
   }
 
+  // Función para convertir horario a minutos (para ordenar)
+  const parseHorario = (horario: string): number => {
+    const match = horario.match(/(\d{1,2}):?(\d{2})?/)
+    if (match) {
+      const horas = parseInt(match[1])
+      const minutos = match[2] ? parseInt(match[2]) : 0
+      return horas * 60 + minutos
+    }
+    return 0
+  }
+
   const filteredProgramacao = selectedDay 
     ? programacao.filter(programa => 
         programa.diasSemana.toLowerCase().includes(selectedDay.toLowerCase()) ||
@@ -47,8 +58,8 @@ export default function ProgramacaoPage() {
         (selectedDay.includes('Sexta') && programa.diasSemana.includes('Segunda a Sexta')) ||
         (selectedDay.includes('Sábado') && programa.diasSemana.includes('Fins de Semana')) ||
         (selectedDay.includes('Domingo') && programa.diasSemana.includes('Fins de Semana'))
-      )
-    : programacao
+      ).sort((a, b) => parseHorario(a.horarios) - parseHorario(b.horarios))
+    : programacao.sort((a, b) => parseHorario(a.horarios) - parseHorario(b.horarios))
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -71,20 +82,10 @@ export default function ProgramacaoPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex flex-wrap items-center gap-4">
             <span className="text-gray-700 font-helvetica-black">Filtrar por dia:</span>
-            <button
-              onClick={() => setSelectedDay('')}
-              className={`px-4 py-2 rounded-md text-sm font-helvetica-black transition-colors ${
-                selectedDay === '' 
-                  ? 'bg-bandfm-orange-500 text-white hover:bg-bandfm-orange-600' 
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              Todos os dias
-            </button>
             {diasSemana.map((dia) => (
               <button
                 key={dia}
-                onClick={() => setSelectedDay(dia)}
+                onClick={() => setSelectedDay(selectedDay === dia ? '' : dia)}
                 className={`px-4 py-2 rounded-md text-sm font-helvetica-black transition-colors ${
                   selectedDay === dia 
                     ? 'bg-bandfm-orange-500 text-white hover:bg-bandfm-orange-600' 
@@ -106,66 +107,63 @@ export default function ProgramacaoPage() {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
             </div>
           ) : (
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-orange-50">
-                    <tr>
-                      <th className="px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-widerr">
-                        Horário
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-widerr">
-                        Programa
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-widerr">
-                        Apresentador
-                      </th>
-                      <th className="px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-widerr">
-                        Dias
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {filteredProgramacao.length > 0 ? (
-                      filteredProgramacao.map((programa) => (
-                        <tr key={programa.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-helvetica-black text-gray-900">
-                            {programa.horarios}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-bandfm-orange-700 font-semibold">
-                            {programa.nomePrograma}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {programa.nomeApresentador}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-helvetica-black bg-orange-100 text-bandfm-orange-700">
-                              {programa.diasSemana}
-                            </span>
-                          </td>
+            <>
+              {filteredProgramacao.length > 0 ? (
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead className="bg-orange-50">
+                        <tr>
+                          <th className="px-3 sm:px-4 lg:px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-wider">
+                            Horário
+                          </th>
+                          <th className="px-3 sm:px-4 lg:px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-wider">
+                            Programa
+                          </th>
+                          <th className="px-3 sm:px-4 lg:px-6 py-3 text-left text-xs font-helvetica-black text-gray-500 uppercase tracking-wider">
+                            Apresentador
+                          </th>
                         </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
-                          <div className="flex flex-col items-center">
-                            <svg className="w-12 h-12 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                            </svg>
-                            <p className="text-lg font-helvetica-black text-gray-900 mb-1">
-                              {selectedDay ? `Nenhum programa para ${selectedDay}` : 'Programação em breve'}
-                            </p>
-                            <p className="text-sm text-gray-500">
-                              {selectedDay ? 'Tente selecionar outro dia da semana' : 'Estamos preparando nossa programação especial para você!'}
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {filteredProgramacao.map((programa) => (
+                          <tr key={programa.id} className="hover:bg-gray-50 transition-colors">
+                            <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm font-helvetica-black text-gray-900 whitespace-nowrap">
+                              <div className="flex items-center">
+                                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-bandfm-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                                </svg>
+                                <span className="text-xs sm:text-sm">{programa.horarios}</span>
+                              </div>
+                            </td>
+                            <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm text-bandfm-orange-700 font-bold">
+                              {programa.nomePrograma}
+                            </td>
+                            <td className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-900">
+                              {programa.nomeApresentador}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-white rounded-lg shadow-md p-12">
+                  <div className="flex flex-col items-center text-center">
+                    <svg className="w-16 h-16 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                    <p className="text-xl font-helvetica-black text-gray-900 mb-2">
+                      {selectedDay ? `Nenhum programa para ${selectedDay}` : 'Programação em breve'}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {selectedDay ? 'Tente selecionar outro dia da semana' : 'Estamos preparando nossa programação especial para você!'}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>

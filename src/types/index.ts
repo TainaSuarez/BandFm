@@ -2,6 +2,9 @@ export interface Admin {
   id: string
   email: string
   password: string
+  nome: string
+  isMaster: boolean
+  ativo: boolean
   createdAt: Date
   updatedAt: Date
 }
@@ -86,4 +89,28 @@ export interface Podcast {
 export interface LoginData {
   email: string
   password: string
+}
+
+export interface EnqueteMusicaVoto {
+  id: string
+  genero: string
+  ipAddress?: string
+  createdAt: Date
+}
+
+export interface EnqueteResultado {
+  genero: string
+  votos: number
+  porcentagem: number
+}
+
+export interface GaleriaItem {
+  id: string
+  tipo: 'foto' | 'video'
+  url: string
+  legenda: string
+  ativo: boolean
+  ordem: number
+  createdAt: Date
+  updatedAt: Date
 }

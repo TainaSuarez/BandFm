@@ -14,6 +14,9 @@ model Admin {
   id        String   @id @default(cuid())
   email     String   @unique
   password  String
+  nome      String   @default("Admin")
+  isMaster  Boolean  @default(false) // Solo un admin master puede gestionar otros admins
+  ativo     Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -92,6 +95,24 @@ model Podcast {
   audioUrl    String   // URL do arquivo MP3
   ativo       Boolean  @default(true)
   duracao     String?  // Duração do podcast (ex: "25:30")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model EnqueteMusicaVoto {
+  id          String   @id @default(cuid())
+  genero      String   // Sertanejo, Pagode, MBP, Gaúcha, Latina, Rock
+  ipAddress   String?  // Para evitar votos duplicados
+  createdAt   DateTime @default(now())
+}
+
+model GaleriaItem {
+  id          String   @id @default(cuid())
+  tipo        String   // "foto" ou "video"
+  url         String   // URL da imagem ou vídeo
+  legenda     String   // Pie de foto/video
+  ativo       Boolean  @default(true)
+  ordem       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

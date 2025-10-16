@@ -16,19 +16,24 @@ export async function POST(request: NextRequest) {
     }
 
     // Verificar tipo de arquivo
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'audio/mpeg', 'audio/mp3', 'audio/wav']
+    const allowedTypes = [
+      'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp',
+      'audio/mpeg', 'audio/mp3', 'audio/wav',
+      'video/mp4', 'video/webm', 'video/quicktime', 'video/x-msvideo', 'video/avi'
+    ]
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json(
-        { success: false, message: 'Tipo de arquivo não suportado. Use imagens (JPG, PNG, GIF, WebP) ou áudio (MP3, WAV)' },
+        { success: false, message: 'Tipo de arquivo não suportado. Use imagens (JPG, PNG, GIF, WebP), áudio (MP3, WAV) ou vídeos (MP4, WebM, MOV, AVI)' },
         { status: 400 }
       )
     }
 
-    // Verificar tamanho do arquivo (máximo 50MB)
-    const maxSize = 50 * 1024 * 1024 // 50MB
+    // Verificar tamanho do arquivo (máximo 100MB para vídeos, 50MB para outros)
+    const isVideo = file.type.startsWith('video/')
+    const maxSize = isVideo ? 100 * 1024 * 1024 : 50 * 1024 * 1024 // 100MB para vídeos, 50MB para outros
     if (file.size > maxSize) {
       return NextResponse.json(
-        { success: false, message: 'Arquivo muito grande. Máximo 50MB' },
+        { success: false, message: `Arquivo muito grande. Máximo ${isVideo ? '100MB' : '50MB'}` },
         { status: 400 }
       )
     }
@@ -43,6 +48,7 @@ export async function POST(request: NextRequest) {
     let folder = 'files'
     if (isImage) folder = 'images'
     if (isAudio) folder = 'audio'
+    if (isVideo) folder = 'videos'
 
     // Criar nome único para o arquivo
     const timestamp = Date.now()

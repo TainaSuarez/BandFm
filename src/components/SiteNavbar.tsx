@@ -154,6 +154,9 @@ export default function SiteNavbar() {
               <Link href="/equipe" className="text-black hover:text-bandfm-orange-500 px-3 py-2 text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 EQUIPE
               </Link>
+              <Link href="/galeria" className="text-black hover:text-bandfm-orange-500 px-3 py-2 text-base font-helvetica-black font-bold uppercase tracking-widerr">
+                GALERIA
+              </Link>
               <Link href="/sobre" className="text-black hover:text-bandfm-orange-500 px-3 py-2 text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 A RÁDIO
               </Link>
@@ -221,6 +224,9 @@ export default function SiteNavbar() {
               </Link>
               <Link href="/equipe" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 EQUIPE
+              </Link>
+              <Link href="/galeria" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black font-bold uppercase tracking-widerr">
+                GALERIA
               </Link>
               <Link href="/sobre" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 A RÁDIO
