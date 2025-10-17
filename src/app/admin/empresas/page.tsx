@@ -16,7 +16,8 @@ export default function EmpresasPage() {
     email: '',
     senha: '',
     descricao: '',
-    categoria: ''
+    categoria: '',
+    telefono: ''
   })
 
   useEffect(() => {
@@ -60,7 +61,8 @@ export default function EmpresasPage() {
           email: '',
           senha: '',
           descricao: '',
-          categoria: ''
+          categoria: '',
+          telefono: ''
         })
       } else {
         const error = await response.json()
@@ -79,7 +81,8 @@ export default function EmpresasPage() {
       email: empresa.email,
       senha: '', // Don't prefill password
       descricao: empresa.descricao,
-      categoria: empresa.categoria
+      categoria: empresa.categoria,
+      telefono: empresa.telefono || ''
     })
     setShowForm(true)
   }
@@ -111,7 +114,8 @@ export default function EmpresasPage() {
       email: '',
       senha: '',
       descricao: '',
-      categoria: ''
+      categoria: '',
+      telefono: ''
     })
   }
 
@@ -205,6 +209,16 @@ export default function EmpresasPage() {
                     onChange={(e) => setFormData({ ...formData, categoria: e.target.value })}
                   />
                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Telefone (opcional)</label>
+                  <input
+                    type="tel"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    value={formData.telefono}
+                    onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
+                    placeholder="+55 11 1234-5678"
+                  />
+                </div>
                 <div className="flex justify-end space-x-3 pt-4">
                   <button
                     type="button"
@@ -249,6 +263,11 @@ export default function EmpresasPage() {
                         <p className="text-xs sm:text-sm text-gray-500 break-words">
                           {empresa.email} • {empresa.categoria}
                         </p>
+                        {empresa.telefono && (
+                          <p className="text-xs text-gray-500 mt-1">
+                            📞 {empresa.telefono}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div className="flex space-x-2 sm:flex-shrink-0">

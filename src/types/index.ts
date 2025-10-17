@@ -17,6 +17,7 @@ export interface Empresa {
   senha: string
   descricao: string
   categoria: string
+  telefono?: string
   createdAt: Date
   updatedAt: Date
 }

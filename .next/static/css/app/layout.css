@@ -2585,6 +2585,11 @@ video {
   --tw-gradient-to: #b91c1c var(--tw-gradient-to-position);
 }
 
+.hover\:text-bandfm-green-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(124 179 66 / var(--tw-text-opacity, 1));
+}
+
 .hover\:text-bandfm-green-600:hover {
   --tw-text-opacity: 1;
   color: rgb(106 153 56 / var(--tw-text-opacity, 1));
@@ -2817,6 +2822,12 @@ video {
   --tw-ring-color: rgb(234 179 8 / var(--tw-ring-opacity, 1));
 }
 
+.active\:scale-95:active {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .disabled\:scale-100:disabled {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
@@ -2855,6 +2866,11 @@ video {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:bg-bandfm-green-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 242 209 / var(--tw-bg-opacity, 1));
 }
 
 .group:hover .group-hover\:bg-bandfm-orange-100 {
@@ -3318,6 +3334,10 @@ video {
 }
 
 @media (min-width: 768px) {
+
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
 
   .md\:mx-0 {
     margin-left: 0px;

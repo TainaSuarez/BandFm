@@ -15,7 +15,8 @@ export default function EmpresaPerfilPage() {
     foto: '',
     email: '',
     descricao: '',
-    categoria: ''
+    categoria: '',
+    telefono: ''
   })
 
   useEffect(() => {
@@ -45,7 +46,8 @@ export default function EmpresaPerfilPage() {
           foto: data.foto || '',
           email: data.email || '',
           descricao: data.descricao || '',
-          categoria: data.categoria || ''
+          categoria: data.categoria || '',
+          telefono: data.telefono || ''
         })
       } else {
         throw new Error('Erro ao carregar dados da empresa')
@@ -100,7 +102,8 @@ export default function EmpresaPerfilPage() {
         foto: formData.foto.trim() || null,
         email: formData.email.trim(),
         descricao: formData.descricao.trim(),
-        categoria: formData.categoria.trim()
+        categoria: formData.categoria.trim(),
+        telefono: formData.telefono.trim() || null
       }
 
       console.log('Updating empresa data:', submitData)
@@ -144,7 +147,8 @@ export default function EmpresaPerfilPage() {
         foto: empresa.foto || '',
         email: empresa.email || '',
         descricao: empresa.descricao || '',
-        categoria: empresa.categoria || ''
+        categoria: empresa.categoria || '',
+        telefono: empresa.telefono || ''
       })
     }
     setIsEditing(false)
@@ -246,6 +250,23 @@ export default function EmpresaPerfilPage() {
                     </div>
                   </div>
                 </div>
+
+                {/* Telefone */}
+                {empresa.telefono && (
+                  <div className="bg-gray-50 rounded-xl p-4 md:col-span-2">
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 bg-blue-100 rounded-lg">
+                        <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-500 uppercase">Telefone</p>
+                        <p className="text-gray-900 font-medium">{empresa.telefono}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Descrição */}
@@ -352,6 +373,20 @@ export default function EmpresaPerfilPage() {
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                   value={formData.categoria}
                   onChange={(e) => setFormData({ ...formData, categoria: e.target.value })}
+                />
+              </div>
+
+              {/* Telefone */}
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  Telefone (opcional)
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+55 11 1234-5678"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                  value={formData.telefono}
+                  onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
                 />
               </div>
 

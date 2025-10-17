@@ -50,7 +50,7 @@ export default function SiteNavbar() {
     }
   }, [])
   
-  const togglePlay = (e: React.MouseEvent) => {
+  const togglePlay = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     
@@ -58,22 +58,15 @@ export default function SiteNavbar() {
     
     if (isPlaying) {
       audioRef.current.pause()
-      setIsPlaying(false)
     } else {
       setIsLoading(true)
-      // Recargar el audio antes de reproducir para asegurar conexión fresca
-      audioRef.current.load()
-      audioRef.current.play()
-        .then(() => {
-          setIsPlaying(true)
-          setIsLoading(false)
-        })
-        .catch((error) => {
-          console.error('Error al reproducir:', error)
-          alert('No se pudo conectar con el streaming. Por favor, intente nuevamente.')
-          setIsPlaying(false)
-          setIsLoading(false)
-        })
+      try {
+        await audioRef.current.play()
+      } catch (error) {
+        console.error('Error al reproducir:', error)
+        alert('No se pudo conectar con el streaming. Por favor, intente nuevamente.')
+        setIsLoading(false)
+      }
     }
   }
 
@@ -94,7 +87,7 @@ export default function SiteNavbar() {
               <button 
                 onClick={togglePlay}
                 disabled={isLoading}
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-all duration-100 disabled:opacity-50 active:scale-95"
               >
                 {isLoading ? (
                   <svg className="w-5 h-5 text-bandfm-green-600 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -128,7 +121,7 @@ export default function SiteNavbar() {
               </div>
               
               {/* Control de volumen */}
-              <button className="text-white hover:text-gray-200 transition-colors">
+              <button className="text-white hover:text-gray-200 transition-colors duration-100">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
                 </svg>
@@ -177,7 +170,7 @@ export default function SiteNavbar() {
               <button 
                 onClick={togglePlay}
                 disabled={isLoading}
-                className="w-8 h-8 bg-white rounded-full flex items-center justify-center disabled:opacity-50"
+                className="w-8 h-8 bg-white rounded-full flex items-center justify-center disabled:opacity-50 active:scale-95 transition-all duration-100"
               >
                 {isLoading ? (
                   <svg className="w-4 h-4 text-bandfm-green-600 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -199,7 +192,8 @@ export default function SiteNavbar() {
             
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black"
+              className="text-black hover:text-bandfm-orange-500 px-3 py-2 rounded-md text-sm font-helvetica-black transition-colors duration-100"
+              aria-label="Toggle menu"
             >
               ☰
             </button>
@@ -208,7 +202,7 @@ export default function SiteNavbar() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="md:hidden bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-150">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="#inicio" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 HOME
@@ -253,11 +247,10 @@ export default function SiteNavbar() {
       {/* Elemento de audio oculto */}
       <audio 
         ref={audioRef}
-        preload="metadata"
+        preload="none"
         className="hidden"
       >
         <source src="https://stm28.xcast.com.br:11364/stream" type="audio/mpeg" />
-        <source src="https://stm28.xcast.com.br:11364/stream" type="audio/aac" />
       </audio>
 
       {/* WhatsApp Button - No mostrar en páginas de empresa */}

@@ -3,5 +3,14 @@
   "/api/noticias/route": "app/api/noticias/route.js",
   "/api/promocoes/route": "app/api/promocoes/route.js",
   "/api/banners/route": "app/api/banners/route.js",
-  "/page": "app/page.js"
+  "/api/empresas/route": "app/api/empresas/route.js",
+  "/api/produtos/route": "app/api/produtos/route.js",
+  "/api/empresas/[id]/route": "app/api/empresas/[id]/route.js",
+  "/page": "app/page.js",
+  "/programacao/page": "app/programacao/page.js",
+  "/podcasts/page": "app/podcasts/page.js",
+  "/promocoes/page": "app/promocoes/page.js",
+  "/sobre/page": "app/sobre/page.js",
+  "/clube-ouvintes/page": "app/clube-ouvintes/page.js",
+  "/empresa/[id]/page": "app/empresa/[id]/page.js"
 }

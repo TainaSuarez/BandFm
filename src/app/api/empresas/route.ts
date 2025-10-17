@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
     
-    const { nome, foto, email, senha, descricao, categoria } = data
+    const { nome, foto, email, senha, descricao, categoria, telefono } = data
 
     if (!nome || !email || !senha || !descricao || !categoria) {
       return NextResponse.json(
@@ -33,7 +33,8 @@ export async function POST(request: NextRequest) {
       email,
       senha,
       descricao,
-      categoria
+      categoria,
+      telefono
     })
 
     if (!empresa) {

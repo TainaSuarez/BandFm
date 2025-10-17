@@ -29,6 +29,7 @@ model Empresa {
   senha       String
   descricao   String
   categoria   String
+  telefono    String?  // Teléfono opcional
   produtos    Produto[] // Relação com produtos
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
