@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import LoginDropdown from '@/components/LoginDropdown'
 import BandFMLogo from '@/components/BandFMLogo'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { useToast } from '@/hooks/useToast'
 
 export default function SiteNavbar() {
   const pathname = usePathname()
@@ -13,6 +14,7 @@ export default function SiteNavbar() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const { error, ToastContainer } = useToast()
   
   // No mostrar WhatsApp button en páginas de empresa individual
   const showWhatsAppButton = !pathname?.startsWith('/empresa/')
@@ -62,9 +64,9 @@ export default function SiteNavbar() {
       setIsLoading(true)
       try {
         await audioRef.current.play()
-      } catch (error) {
-        console.error('Error al reproducir:', error)
-        alert('No se pudo conectar con el streaming. Por favor, intente nuevamente.')
+      } catch (err) {
+        console.error('Error al reproducir:', err)
+        error('Não foi possível conectar com o streaming. Por favor, tente novamente.')
         setIsLoading(false)
       }
     }
@@ -255,6 +257,9 @@ export default function SiteNavbar() {
 
       {/* WhatsApp Button - No mostrar en páginas de empresa */}
       {showWhatsAppButton && <WhatsAppButton />}
+      
+      {/* Toast Notifications */}
+      <ToastContainer />
     </nav>
   )
 }

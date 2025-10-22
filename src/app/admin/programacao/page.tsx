@@ -3,12 +3,14 @@
 import { useState, useEffect } from 'react'
 import AdminLayout from '@/components/AdminLayout'
 import { ProgramacaoRadio } from '@/types'
+import { useToast } from '@/hooks/useToast'
 
 export default function ProgramacaoPage() {
   const [programacao, setProgramacao] = useState<ProgramacaoRadio[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editingProgramacao, setEditingProgramacao] = useState<ProgramacaoRadio | null>(null)
+  const { success, error, ToastContainer } = useToast()
   const [formData, setFormData] = useState({
     diasSemana: '',
     horarios: '',
@@ -63,12 +65,13 @@ export default function ProgramacaoPage() {
       if (response.ok) {
         await fetchProgramacao()
         resetForm()
+        success(editingProgramacao ? 'Programação atualizada com sucesso!' : 'Programação criada com sucesso!')
       } else {
-        const error = await response.json()
-        alert(error.message || 'Erro ao salvar programação')
+        const errorData = await response.json()
+        error(errorData.message || 'Erro ao salvar programação')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -93,11 +96,12 @@ export default function ProgramacaoPage() {
 
       if (response.ok) {
         await fetchProgramacao()
+        success('Programação excluída com sucesso!')
       } else {
-        alert('Erro ao excluir programação')
+        error('Erro ao excluir programação')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -321,6 +325,9 @@ export default function ProgramacaoPage() {
           )}
         </div>
       </div>
+      
+      {/* Toast Notifications */}
+      <ToastContainer />
     </AdminLayout>
   )
 }

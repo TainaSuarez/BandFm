@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import AdminLayout from '@/components/AdminLayout'
 import { Admin } from '@/types'
+import { useToast } from '@/hooks/useToast'
 
 export default function AdministradoresPage() {
   const [admins, setAdmins] = useState<Admin[]>([])
@@ -10,6 +11,7 @@ export default function AdministradoresPage() {
   const [showForm, setShowForm] = useState(false)
   const [editingAdmin, setEditingAdmin] = useState<Admin | null>(null)
   const [currentAdmin, setCurrentAdmin] = useState<Admin | null>(null)
+  const { success, error, warning, ToastContainer } = useToast()
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -26,8 +28,10 @@ export default function AdministradoresPage() {
       
       // Si no es master, redirigir
       if (!admin.isMaster) {
-        alert('Apenas administradores master podem acessar esta página')
-        window.location.href = '/admin'
+        error('Apenas administradores master podem acessar esta página')
+        setTimeout(() => {
+          window.location.href = '/admin'
+        }, 2000)
         return
       }
     }
@@ -51,7 +55,7 @@ export default function AdministradoresPage() {
     e.preventDefault()
 
     if (!currentAdmin) {
-      alert('Você precisa estar logado')
+      error('Você precisa estar logado')
       return
     }
 
@@ -75,14 +79,14 @@ export default function AdministradoresPage() {
         if (response.ok) {
           await fetchAdmins()
           resetForm()
-          alert('Administrador atualizado com sucesso')
+          success('Administrador atualizado com sucesso')
         } else {
-          alert(result.message || 'Erro ao atualizar administrador')
+          error(result.message || 'Erro ao atualizar administrador')
         }
       } else {
         // Crear nuevo admin
         if (!formData.password) {
-          alert('Senha é obrigatória para novo administrador')
+          warning('Senha é obrigatória para novo administrador')
           return
         }
 
@@ -99,19 +103,19 @@ export default function AdministradoresPage() {
         if (response.ok) {
           await fetchAdmins()
           resetForm()
-          alert('Administrador criado com sucesso')
+          success('Administrador criado com sucesso')
         } else {
-          alert(result.message || 'Erro ao criar administrador')
+          error(result.message || 'Erro ao criar administrador')
         }
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
   const handleEdit = (admin: Admin) => {
     if (admin.isMaster && admin.id !== currentAdmin?.id) {
-      alert('Você não pode editar outro administrador master')
+      warning('Você não pode editar outro administrador master')
       return
     }
 
@@ -129,14 +133,14 @@ export default function AdministradoresPage() {
     const adminToDelete = admins.find(a => a.id === id)
     
     if (adminToDelete?.isMaster) {
-      alert('Não é possível excluir um administrador master')
+      warning('Não é possível excluir um administrador master')
       return
     }
 
     if (!confirm('Tem certeza que deseja excluir este administrador?')) return
 
     if (!currentAdmin) {
-      alert('Você precisa estar logado')
+      error('Você precisa estar logado')
       return
     }
 
@@ -149,12 +153,12 @@ export default function AdministradoresPage() {
 
       if (response.ok) {
         await fetchAdmins()
-        alert('Administrador excluído com sucesso')
+        success('Administrador excluído com sucesso')
       } else {
-        alert(result.message || 'Erro ao excluir administrador')
+        error(result.message || 'Erro ao excluir administrador')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -367,6 +371,9 @@ export default function AdministradoresPage() {
           </table>
         </div>
       )}
+      
+      {/* Toast Notifications */}
+      <ToastContainer />
     </AdminLayout>
   )
 }

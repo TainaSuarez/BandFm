@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react'
 import EmpresaLayout from '@/components/EmpresaLayout'
 import { Empresa } from '@/types'
 import FileUpload from '@/components/FileUpload'
+import { useToast } from '@/hooks/useToast'
 
 export default function EmpresaPerfilPage() {
   const [empresa, setEmpresa] = useState<Empresa | null>(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
+  const { success, error, warning, ToastContainer } = useToast()
   const [formData, setFormData] = useState({
     nome: '',
     foto: '',
@@ -52,9 +54,9 @@ export default function EmpresaPerfilPage() {
       } else {
         throw new Error('Erro ao carregar dados da empresa')
       }
-    } catch (error) {
-      console.error('Error fetching empresa data:', error)
-      alert('Erro ao carregar dados da empresa.')
+    } catch (err) {
+      console.error('Error fetching empresa data:', err)
+      error('Erro ao carregar dados da empresa.')
     } finally {
       setLoading(false)
     }
@@ -64,7 +66,7 @@ export default function EmpresaPerfilPage() {
     e.preventDefault()
     
     if (!empresa) {
-      alert('Erro: empresa não encontrada')
+      error('Erro: empresa não encontrada')
       return
     }
     
@@ -73,7 +75,7 @@ export default function EmpresaPerfilPage() {
     try {
       // Validar campos obrigatórios
       if (!formData.nome.trim() || !formData.email.trim() || !formData.descricao.trim() || !formData.categoria.trim()) {
-        alert('Nome, email, descrição e categoria são obrigatórios')
+        warning('Nome, email, descrição e categoria são obrigatórios')
         setSaving(false)
         return
       }
@@ -81,7 +83,7 @@ export default function EmpresaPerfilPage() {
       // Validar email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!emailRegex.test(formData.email)) {
-        alert('Por favor, insira um email válido')
+        warning('Por favor, insira um email válido')
         setSaving(false)
         return
       }
@@ -91,7 +93,7 @@ export default function EmpresaPerfilPage() {
         const isValidImageUrl = formData.foto.startsWith('http') || formData.foto.startsWith('/uploads/')
         
         if (!isValidImageUrl) {
-          alert('Por favor, selecione uma foto válida')
+          warning('Por favor, selecione uma foto válida')
           setSaving(false)
           return
         }
@@ -126,15 +128,15 @@ export default function EmpresaPerfilPage() {
         localStorage.setItem('empresa-session', JSON.stringify(updatedEmpresa))
         
         setIsEditing(false)
-        alert('Perfil atualizado com sucesso!')
+        success('Perfil atualizado com sucesso!')
       } else {
-        const error = await response.json().catch(() => ({ message: 'Erro desconhecido' }))
-        console.error('Server error:', error)
-        alert(`Erro do servidor: ${error.message}`)
+        const errorData = await response.json().catch(() => ({ message: 'Erro desconhecido' }))
+        console.error('Server error:', errorData)
+        error(`Erro do servidor: ${errorData.message}`)
       }
-    } catch (error: any) {
-      console.error('Network error:', error)
-      alert(`Erro de conexão: ${error.message}`)
+    } catch (err: any) {
+      console.error('Network error:', err)
+      error(`Erro de conexão: ${err.message}`)
     } finally {
       setSaving(false)
     }
@@ -426,6 +428,9 @@ export default function EmpresaPerfilPage() {
           </div>
         )}
       </div>
+      
+      {/* Toast Notifications */}
+      <ToastContainer />
     </EmpresaLayout>
   )
 }

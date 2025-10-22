@@ -1,4 +1,4 @@
-// File: C:\Users\CLIENTE2025\Desktop\Apps\BandFM materiales\AppBandFM\AppBandFM\src\app\api\galeria\route.ts
+// File: C:\Users\CLIENTE2025\OneDrive\Desktop\Apps\BandFM materiales\AppBandFM\AppBandFM\src\app\api\galeria\route.ts
 import * as entry from '../../../../../src/app/api/galeria/route.js'
 import type { NextRequest } from 'next/server.js'
 

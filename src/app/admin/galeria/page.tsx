@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react'
 import AdminLayout from '@/components/AdminLayout'
 import { GaleriaItem } from '@/types'
 import FileUpload from '@/components/FileUpload'
+import { useToast } from '@/hooks/useToast'
 
 export default function GaleriaAdminPage() {
   const [items, setItems] = useState<GaleriaItem[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editingItem, setEditingItem] = useState<GaleriaItem | null>(null)
+  const { success, error, ToastContainer } = useToast()
   const [formData, setFormData] = useState({
     tipo: 'foto' as 'foto' | 'video',
     url: '',
@@ -52,13 +54,13 @@ export default function GaleriaAdminPage() {
       if (response.ok) {
         await fetchItems()
         resetForm()
-        alert(editingItem ? 'Item atualizado com sucesso!' : 'Item criado com sucesso!')
+        success(editingItem ? 'Item atualizado com sucesso!' : 'Item criado com sucesso!')
       } else {
-        const error = await response.json()
-        alert(error.message || 'Erro ao salvar item')
+        const errorData = await response.json()
+        error(errorData.message || 'Erro ao salvar item')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -84,10 +86,12 @@ export default function GaleriaAdminPage() {
 
       if (response.ok) {
         await fetchItems()
-        alert('Item excluído com sucesso!')
+        success('Item excluído com sucesso!')
+      } else {
+        error('Erro ao excluir item')
       }
-    } catch (error) {
-      alert('Erro ao excluir item')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -309,6 +313,9 @@ export default function GaleriaAdminPage() {
           </div>
         </div>
       )}
+      
+      {/* Toast Notifications */}
+      <ToastContainer />
     </AdminLayout>
   )
 }

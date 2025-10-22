@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import EmpresaLayout from '@/components/EmpresaLayout'
 import { Empresa, Produto } from '@/types'
 import FileUpload from '@/components/FileUpload'
+import { useToast } from '@/hooks/useToast'
 
 export default function EmpresaProdutosPage() {
   const [empresa, setEmpresa] = useState<Empresa | null>(null)
@@ -12,6 +13,7 @@ export default function EmpresaProdutosPage() {
   const [showForm, setShowForm] = useState(false)
   const [editingProduto, setEditingProduto] = useState<Produto | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const { success, error, warning, ToastContainer } = useToast()
   const [formData, setFormData] = useState({
     nome: '',
     descricao: '',
@@ -26,9 +28,9 @@ export default function EmpresaProdutosPage() {
       const response = await fetch(`/api/produtos?empresaId=${empresaId}`)
       const data = await response.json()
       setProdutos(data)
-    } catch (error) {
-      console.error('Error fetching produtos:', error)
-      alert('Erro ao carregar produtos.')
+    } catch (err) {
+      console.error('Error fetching produtos:', err)
+      error('Erro ao carregar produtos.')
     } finally {
       setLoading(false)
     }
@@ -54,11 +56,11 @@ export default function EmpresaProdutosPage() {
         fetchProdutos(empresaData.id)
       } else {
         console.error('Empresa ID not found in session data')
-        alert('Erro: ID da empresa não encontrado na sessão')
+        error('Erro: ID da empresa não encontrado na sessão')
       }
-    } catch (error) {
-      console.error('Error parsing empresa session:', error)
-      alert('Erro ao carregar dados da empresa')
+    } catch (err) {
+      console.error('Error parsing empresa session:', err)
+      error('Erro ao carregar dados da empresa')
       window.location.href = '/login-empresa'
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,27 +71,27 @@ export default function EmpresaProdutosPage() {
     
     if (!empresa) {
       console.error('Empresa not found in state:', empresa)
-      alert('Erro: empresa não encontrada')
+      error('Erro: empresa não encontrada')
       return
     }
     
     if (!empresa.id) {
       console.error('Empresa ID not found:', empresa)
-      alert('Erro: ID da empresa não encontrado')
+      error('Erro: ID da empresa não encontrado')
       return
     }
     
     try {
       // Validar campos obrigatórios
       if (!formData.nome.trim() || !formData.descricao.trim() || !formData.imagem.trim() || !formData.preco) {
-        alert('Todos os campos são obrigatórios')
+        warning('Todos os campos são obrigatórios')
         return
       }
 
       // Validar preço
       const preco = parseFloat(formData.preco)
       if (isNaN(preco) || preco <= 0) {
-        alert('Preço deve ser um número válido maior que zero')
+        warning('Preço deve ser um número válido maior que zero')
         return
       }
 
@@ -97,7 +99,7 @@ export default function EmpresaProdutosPage() {
       const isValidImageUrl = formData.imagem.startsWith('http') || formData.imagem.startsWith('/uploads/')
       
       if (!isValidImageUrl) {
-        alert('Por favor, selecione uma imagem válida')
+        warning('Por favor, selecione uma imagem válida')
         return
       }
 
@@ -128,15 +130,15 @@ export default function EmpresaProdutosPage() {
         console.log('Success response:', result)
         await fetchProdutos(empresa.id)
         resetForm()
-        alert(editingProduto ? 'Produto atualizado com sucesso!' : 'Produto criado com sucesso!')
+        success(editingProduto ? 'Produto atualizado com sucesso!' : 'Produto criado com sucesso!')
       } else {
-        const error = await response.json().catch(() => ({ message: 'Erro desconhecido' }))
-        console.error('Server error:', error)
-        alert(`Erro do servidor: ${error.message}`)
+        const errorData = await response.json().catch(() => ({ message: 'Erro desconhecido' }))
+        console.error('Server error:', errorData)
+        error(`Erro do servidor: ${errorData.message}`)
       }
-    } catch (error: any) {
-      console.error('Network error:', error)
-      alert(`Erro de conexão: ${error.message}`)
+    } catch (err: any) {
+      console.error('Network error:', err)
+      error(`Erro de conexão: ${err.message}`)
     }
   }
 
@@ -162,12 +164,12 @@ export default function EmpresaProdutosPage() {
 
       if (response.ok) {
         await fetchProdutos(empresa!.id)
-        alert('Produto excluído com sucesso!')
+        success('Produto excluído com sucesso!')
       } else {
-        alert('Erro ao excluir produto')
+        error('Erro ao excluir produto')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -184,10 +186,10 @@ export default function EmpresaProdutosPage() {
       if (response.ok) {
         await fetchProdutos(empresa!.id)
       } else {
-        alert('Erro ao alterar status do produto')
+        error('Erro ao alterar status do produto')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -469,6 +471,9 @@ export default function EmpresaProdutosPage() {
           ))}
         </div>
       )}
+      
+      {/* Toast Notifications */}
+      <ToastContainer />
     </EmpresaLayout>
   )
 }

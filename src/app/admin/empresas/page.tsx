@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react'
 import AdminLayout from '@/components/AdminLayout'
 import { Empresa } from '@/types'
 import FileUpload from '@/components/FileUpload'
+import { useToast } from '@/hooks/useToast'
 
 export default function EmpresasPage() {
   const [empresas, setEmpresas] = useState<Empresa[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editingEmpresa, setEditingEmpresa] = useState<Empresa | null>(null)
+  const { success, error, ToastContainer } = useToast()
   const [formData, setFormData] = useState({
     nome: '',
     foto: '',
@@ -64,12 +66,13 @@ export default function EmpresasPage() {
           categoria: '',
           telefono: ''
         })
+        success(editingEmpresa ? 'Empresa atualizada com sucesso!' : 'Empresa criada com sucesso!')
       } else {
-        const error = await response.json()
-        alert(error.message || 'Erro ao salvar empresa')
+        const errorData = await response.json()
+        error(errorData.message || 'Erro ao salvar empresa')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -97,11 +100,12 @@ export default function EmpresasPage() {
 
       if (response.ok) {
         await fetchEmpresas()
+        success('Empresa excluída com sucesso!')
       } else {
-        alert('Erro ao excluir empresa')
+        error('Erro ao excluir empresa')
       }
-    } catch (error) {
-      alert('Erro de conexão')
+    } catch (err) {
+      error('Erro de conexão')
     }
   }
 
@@ -300,6 +304,9 @@ export default function EmpresasPage() {
           )}
         </ul>
       </div>
+      
+      {/* Toast Notifications */}
+      <ToastContainer />
     </AdminLayout>
   )
 }
