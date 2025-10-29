@@ -157,7 +157,7 @@ export default function HomePage() {
                     {/* Botón Saber Mais */}
                     <Link 
                       href="/promocoes"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-bandfm-orange-500 to-orange-600 hover:from-bandfm-orange-600 hover:to-orange-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg group mt-auto"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-sm bg-gradient-to-r from-bandfm-orange-500 to-orange-600 hover:from-bandfm-orange-600 hover:to-orange-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg group mt-auto self-end"
                     >
                       Saber Mais
                       <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

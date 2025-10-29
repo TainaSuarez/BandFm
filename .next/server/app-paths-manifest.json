@@ -1,5 +1,9 @@
 {
-  "/api/auth/login-empresa/route": "app/api/auth/login-empresa/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/enquete-musica/route": "app/api/enquete-musica/route.js",
+  "/api/promocoes/route": "app/api/promocoes/route.js",
+  "/api/noticias/route": "app/api/noticias/route.js",
+  "/api/banners/route": "app/api/banners/route.js",
   "/page": "app/page.js",
   "/login/page": "app/login/page.js",
   "/login-empresa/page": "app/login-empresa/page.js"
