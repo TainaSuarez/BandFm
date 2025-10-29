@@ -85,22 +85,22 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {noticias.length > 0 ? (
               noticias.map((noticia) => (
-                <div key={noticia.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
+                <div key={noticia.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 flex flex-col h-full">
                   {noticia.imagem && (
                     <img src={noticia.imagem} alt={noticia.titulo} className="w-full h-48 object-cover" />
                   )}
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       {noticia.titulo}
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 mb-4 flex-grow">
                       {noticia.descricao}
                     </p>
                     <a 
                       href={noticia.fonte} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-bandfm-green-500 hover:text-bandfm-green-600 font-helvetica-black"
+                      className="text-bandfm-green-500 hover:text-bandfm-green-600 font-helvetica-black mt-auto self-end"
                     >
                       Ler mais →
                     </a>
