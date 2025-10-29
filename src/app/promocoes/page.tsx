@@ -104,7 +104,7 @@ export default function PromocoesPage() {
               {promocoes.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {promocoes.map((promocao) => (
-                    <div key={promocao.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div key={promocao.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow flex flex-col h-full">
                       {/* Imagen */}
                       {promocao.imagem && (
                         <div className="w-full">
@@ -116,18 +116,18 @@ export default function PromocoesPage() {
                         </div>
                       )}
                       
-                      <div className="p-6">
+                      <div className="p-6 flex flex-col flex-grow">
                         <h3 className="text-2xl font-bold mb-4 text-gray-900">
                           {promocao.titulo}
                         </h3>
-                        <p className="text-base mb-6 leading-relaxed text-gray-700">
+                        <p className="text-base mb-6 leading-relaxed text-gray-700 flex-grow">
                           {getDescricaoBreve(promocao.descricao)}
                         </p>
                         
                         {/* Botón Ver Mais */}
                         <button
                           onClick={() => openModal(promocao)}
-                          className="flex items-center justify-center w-full bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+                          className="inline-flex items-center justify-center bg-bandfm-orange-500 hover:bg-bandfm-orange-600 text-white font-bold py-2.5 px-5 rounded-full text-sm transition-all duration-300 shadow-md hover:shadow-lg mt-auto self-end whitespace-nowrap"
                         >
                           Ver Mais
                         </button>

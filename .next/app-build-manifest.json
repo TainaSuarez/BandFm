@@ -51,6 +51,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/auth/login-empresa/route.js"
     ],
+    "/promocoes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/promocoes/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
