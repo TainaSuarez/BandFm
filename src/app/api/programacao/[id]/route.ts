@@ -3,10 +3,11 @@ import { ProgramacaoController } from '@/controllers/programacaoController'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const programacao = await ProgramacaoController.getProgramacaoById(params.id)
+    const { id } = await params
+    const programacao = await ProgramacaoController.getProgramacaoById(id)
     
     if (!programacao) {
       return NextResponse.json(
@@ -27,12 +28,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const data = await request.json()
     
-    const programacao = await ProgramacaoController.updateProgramacao(params.id, data)
+    const programacao = await ProgramacaoController.updateProgramacao(id, data)
 
     if (!programacao) {
       return NextResponse.json(
@@ -56,10 +58,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await ProgramacaoController.deleteProgramacao(params.id)
+    const { id } = await params
+    const success = await ProgramacaoController.deleteProgramacao(id)
 
     if (!success) {
       return NextResponse.json(

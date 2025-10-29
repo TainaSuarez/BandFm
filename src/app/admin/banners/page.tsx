@@ -92,10 +92,14 @@ export default function BannersPage() {
       }
     } catch (error) {
       console.error('Network error:', error)
-      if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
-        alert('Erro de conexão: Verifique se o servidor está executando em http://localhost:3000')
+      if (error instanceof Error) {
+        if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+          alert('Erro de conexão: Verifique se o servidor está executando em http://localhost:3000')
+        } else {
+          alert(`Erro de conexão: ${error.message}`)
+        }
       } else {
-        alert(`Erro de conexão: ${error.message}`)
+        alert('Erro de conexão desconhecido')
       }
     }
   }
@@ -184,7 +188,7 @@ export default function BannersPage() {
               const data = await response.json()
               alert(`API Test: ${data.message}`)
             } catch (error) {
-              alert(`Erro de conectividade: ${error.message}`)
+              alert(`Erro de conectividade: ${error instanceof Error ? error.message : 'Erro desconhecido'}`)
             }
           }}
           className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md"

@@ -3,10 +3,11 @@ import { PromocaoController } from '@/controllers/promocaoController'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const promocao = await PromocaoController.getPromocaoById(params.id)
+    const { id } = await params
+    const promocao = await PromocaoController.getPromocaoById(id)
     
     if (!promocao) {
       return NextResponse.json(
@@ -34,12 +35,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const data = await request.json()
     
-    const promocao = await PromocaoController.updatePromocao(params.id, data)
+    const promocao = await PromocaoController.updatePromocao(id, data)
 
     if (!promocao) {
       return NextResponse.json(
@@ -70,10 +72,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await PromocaoController.deletePromocao(params.id)
+    const { id } = await params
+    const success = await PromocaoController.deletePromocao(id)
 
     if (!success) {
       return NextResponse.json(

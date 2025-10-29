@@ -1,4 +1,9 @@
 {
-  "/api/galeria/route": "app/api/galeria/route.js",
-  "/galeria/page": "app/galeria/page.js"
+  "/api/enquete-musica/route": "app/api/enquete-musica/route.js",
+  "/api/noticias/route": "app/api/noticias/route.js",
+  "/api/promocoes/route": "app/api/promocoes/route.js",
+  "/api/banners/route": "app/api/banners/route.js",
+  "/page": "app/page.js",
+  "/programacao/page": "app/programacao/page.js",
+  "/login/page": "app/login/page.js"
 }

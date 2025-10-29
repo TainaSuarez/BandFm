@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 interface PodcastPlayerProps {
   audioUrl: string
   title: string
-  duration?: string
+  duration?: string | null
 }
 
 export default function PodcastPlayer({ audioUrl, title, duration }: PodcastPlayerProps) {

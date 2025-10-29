@@ -7,18 +7,9 @@ interface RadioPlayerProps {
   stationName?: string
 }
 
-// URLs basadas en radios.com.br y patrones de Band FM 96.1 Livramento
+// URL oficial de Band FM 96.1 Livramento
 const STREAM_URLS = [
-  "https://stm1.srvstm.com:7006/live", // Servidor STM para RS
-  "https://servidor29.brlogic.com:7006/live", // BRLogic hosting
-  "https://cast1.hoost.com.br:8443/live", // Hoost Brasil  
-  "https://s2.stm.com.br:7006/stream", // STM Brasil stream
-  "https://cast.hoost.com.br:8443/live", // Hoost principal
-  "https://servidor31.brlogic.com:8006/live", // BRLogic alt
-  "https://stm3.srvstm.com:8006/stream", // STM alternativo
-  "https://radio.streemlion.com:2020/stream", // StreamLion
-  "https://centova.svdns.com.br:20012/stream", // Centova
-  "https://stream.zeno.fm/bandfm961", // Zeno FM
+  "https://stream.ouveai.com.br/proxy/bandfmlivramento?mp=/stream", // Stream oficial Band FM Livramento
 ]
 
 export default function RadioPlayer({ 
@@ -43,7 +34,7 @@ export default function RadioPlayer({
     const handleError = () => {
       setIsLoading(false)
       setIsPlaying(false)
-      setError(`Erro ao conectar. Stream ${currentStreamIndex + 1}/${STREAM_URLS.length} falhou.`)
+      setError('Erro ao conectar com o stream da rádio. Tente novamente.')
     }
     const handlePlay = () => {
       setIsPlaying(true)
@@ -127,9 +118,6 @@ export default function RadioPlayer({
         </div>
         <h3 className="text-lg font-bold">{stationName}</h3>
         <p className="text-sm opacity-90">96.1 FM • A sua rádio do seu jeito</p>
-        {!streamUrl && (
-          <p className="text-xs opacity-75 mt-1">Stream {currentStreamIndex + 1}/{STREAM_URLS.length}</p>
-        )}
       </div>
 
       {/* Play/Pause Button */}
@@ -179,19 +167,11 @@ export default function RadioPlayer({
           <p className="text-sm">{error}</p>
           <div className="flex gap-2 justify-center mt-2">
             <button 
-              onClick={() => setError(null)} 
+              onClick={() => { setError(null); togglePlay(); }} 
               className="text-xs underline hover:no-underline"
             >
               Tentar novamente
             </button>
-            {!streamUrl && (
-              <button 
-                onClick={tryNextStream} 
-                className="text-xs underline hover:no-underline"
-              >
-                Próximo stream
-              </button>
-            )}
           </div>
         </div>
       )}
@@ -203,10 +183,7 @@ export default function RadioPlayer({
         </p>
         {!isPlaying && !isLoading && (
           <div className="text-xs opacity-60 mt-2 space-y-1">
-            <p>📻 Testando streams de radios.com.br</p>
-            <p className="text-xs opacity-50">
-              ✅ Funciona em localhost
-            </p>
+            <p>📻 Stream oficial Band FM Livramento</p>
           </div>
         )}
       </div>

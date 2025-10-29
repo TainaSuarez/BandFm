@@ -12,12 +12,12 @@ export interface Admin {
 export interface Empresa {
   id: string
   nome: string
-  foto?: string
+  foto?: string | null
   email: string
   senha: string
   descricao: string
   categoria: string
-  telefono?: string
+  telefono?: string | null
   createdAt: Date
   updatedAt: Date
 }
@@ -25,7 +25,7 @@ export interface Empresa {
 export interface Noticia {
   id: string
   titulo: string
-  imagem?: string
+  imagem?: string | null
   descricao: string
   fonte: string
   createdAt: Date
@@ -36,7 +36,7 @@ export interface Promocao {
   id: string
   titulo: string
   descricao: string
-  imagem?: string
+  imagem?: string | null
   createdAt: Date
   updatedAt: Date
 }
@@ -55,7 +55,7 @@ export interface Banner {
   id: string
   titulo: string
   imagem: string
-  link?: string
+  link?: string | null
   ativo: boolean
   ordem: number
   createdAt: Date
@@ -82,7 +82,7 @@ export interface Podcast {
   imagem: string
   audioUrl: string
   ativo: boolean
-  duracao?: string
+  duracao?: string | null
   createdAt: Date
   updatedAt: Date
 }
@@ -95,7 +95,7 @@ export interface LoginData {
 export interface EnqueteMusicaVoto {
   id: string
   genero: string
-  ipAddress?: string
+  ipAddress?: string | null
   createdAt: Date
 }
 

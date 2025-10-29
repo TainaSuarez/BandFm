@@ -3,10 +3,11 @@ import { GaleriaController } from '@/controllers/galeriaController'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const item = await GaleriaController.getItemById(params.id)
+    const { id } = await params
+    const item = await GaleriaController.getItemById(id)
     
     if (!item) {
       return NextResponse.json(
@@ -33,12 +34,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const data = await request.json()
     
-    const item = await GaleriaController.updateItem(params.id, data)
+    const item = await GaleriaController.updateItem(id, data)
 
     if (!item) {
       return NextResponse.json(
@@ -68,10 +70,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await GaleriaController.deleteItem(params.id)
+    const { id } = await params
+    const success = await GaleriaController.deleteItem(id)
 
     if (!success) {
       return NextResponse.json(

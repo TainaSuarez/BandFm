@@ -4,10 +4,11 @@ import { adminController } from '@/controllers/adminController'
 // GET - Obtener admin por ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const admin = await adminController.getAdminById(params.id)
+    const { id } = await params
+    const admin = await adminController.getAdminById(id)
     if (!admin) {
       return NextResponse.json(
         { message: 'Administrador não encontrado' },
@@ -26,9 +27,10 @@ export async function GET(
 // PUT - Actualizar admin (solo admin master)
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
     const { email, password, nome, ativo, requesterId } = body
 
@@ -40,7 +42,7 @@ export async function PUT(
     }
 
     const admin = await adminController.updateAdmin(
-      params.id,
+      id,
       { email, password, nome, ativo },
       requesterId
     )
@@ -60,9 +62,10 @@ export async function PUT(
 // DELETE - Eliminar admin (solo admin master)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const { searchParams } = new URL(request.url)
     const requesterId = searchParams.get('requesterId')
 
@@ -73,7 +76,7 @@ export async function DELETE(
       )
     }
 
-    const result = await adminController.deleteAdmin(params.id, requesterId)
+    const result = await adminController.deleteAdmin(id, requesterId)
     return NextResponse.json(result)
   } catch (error: any) {
     return NextResponse.json(

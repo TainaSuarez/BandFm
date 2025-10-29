@@ -3,10 +3,11 @@ import { NoticiaController } from '@/controllers/noticiaController'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const noticia = await NoticiaController.getNoticiaById(params.id)
+    const { id } = await params
+    const noticia = await NoticiaController.getNoticiaById(id)
     
     if (!noticia) {
       return NextResponse.json(
@@ -27,12 +28,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const data = await request.json()
     
-    const noticia = await NoticiaController.updateNoticia(params.id, data)
+    const noticia = await NoticiaController.updateNoticia(id, data)
 
     if (!noticia) {
       return NextResponse.json(
@@ -56,10 +58,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await NoticiaController.deleteNoticia(params.id)
+    const { id } = await params
+    const success = await NoticiaController.deleteNoticia(id)
 
     if (!success) {
       return NextResponse.json(

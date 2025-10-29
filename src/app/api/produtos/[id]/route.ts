@@ -3,10 +3,11 @@ import { ProdutoController } from '@/controllers/produtoController'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const produto = await ProdutoController.getProdutoById(params.id)
+    const { id } = await params
+    const produto = await ProdutoController.getProdutoById(id)
     
     if (!produto) {
       return NextResponse.json(
@@ -27,11 +28,12 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const data = await request.json()
-    console.log('Updating produto:', params.id, data)
+    console.log('Updating produto:', id, data)
     
     const { nome, descricao, imagem, preco, ativo } = data
 
@@ -83,7 +85,7 @@ export async function PUT(
       updateData.ativo = Boolean(ativo)
     }
 
-    const produto = await ProdutoController.updateProduto(params.id, updateData)
+    const produto = await ProdutoController.updateProduto(id, updateData)
 
     if (!produto) {
       return NextResponse.json(
@@ -107,10 +109,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await ProdutoController.deleteProduto(params.id)
+    const { id } = await params
+    const success = await ProdutoController.deleteProduto(id)
 
     if (!success) {
       return NextResponse.json(

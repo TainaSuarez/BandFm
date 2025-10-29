@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     const bannerData = {
       titulo: titulo || `Banner ${Date.now()}`,
       imagem,
-      link: null, // Always null since we removed the link field
+      link: undefined, // Always undefined since we removed the link field
       ativo: ativo !== undefined ? ativo : true,
       ordem: Number(ordem) || 0
     }
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error creating banner:', error)
     return NextResponse.json(
-      { message: 'Erro interno do servidor', error: error.message },
+      { message: 'Erro interno do servidor', error: error instanceof Error ? error.message : 'Erro desconhecido' },
       { status: 500 }
     )
   }

@@ -3,10 +3,11 @@ import { BannerController } from '@/controllers/bannerController'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const banner = await BannerController.getBannerById(params.id)
+    const { id } = await params
+    const banner = await BannerController.getBannerById(id)
     
     if (!banner) {
       return NextResponse.json(
