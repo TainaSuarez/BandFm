@@ -245,10 +245,20 @@ export default function EmpresaPublicPage() {
                       </span>
                     </div>
                     {/* Indicador de click */}
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs sm:text-sm font-bold bg-black bg-opacity-50 px-3 py-1 rounded-full">
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-end justify-between p-2 sm:p-3">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-[10px] sm:text-xs font-bold bg-black bg-opacity-50 px-2.5 py-1 rounded-full">
                         Clique para ver descrição
                       </div>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setSelectedImage(produto.imagem) }}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-900 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold shadow"
+                        aria-label="Ver foto em tamanho grande"
+                      >
+                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-4.553a1 1 0 00-1.414-1.414L13.586 8.586M6 18l-4 0 0-4m14 4h4v-4M6 6H2v4m10 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        Ver foto
+                      </button>
                     </div>
                   </div>
                   {/* Descrição expandida abaixo da imagem */}
