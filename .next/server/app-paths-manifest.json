@@ -1,10 +1,11 @@
 {
-  "/api/empresas/[id]/route": "app/api/empresas/[id]/route.js",
   "/api/produtos/route": "app/api/produtos/route.js",
+  "/api/empresas/[id]/route": "app/api/empresas/[id]/route.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/programacao/page": "app/programacao/page.js",
-  "/login-empresa/page": "app/login-empresa/page.js",
+  "/api/empresas/route": "app/api/empresas/route.js",
+  "/empresa/produtos/page": "app/empresa/produtos/page.js",
+  "/empresa/page": "app/empresa/page.js",
+  "/page": "app/page.js",
   "/clube-ouvintes/page": "app/clube-ouvintes/page.js",
-  "/empresa/[id]/page": "app/empresa/[id]/page.js",
-  "/empresa/page": "app/empresa/page.js"
+  "/empresa/[id]/page": "app/empresa/[id]/page.js"
 }

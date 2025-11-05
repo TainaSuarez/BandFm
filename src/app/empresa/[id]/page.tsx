@@ -13,7 +13,8 @@ export default function EmpresaPublicPage() {
   
   const [empresa, setEmpresa] = useState<Empresa | null>(null)
   const [produtos, setProdutos] = useState<Produto[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loadingEmpresa, setLoadingEmpresa] = useState(true)
+  const [loadingProdutos, setLoadingProdutos] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null)
@@ -37,6 +38,8 @@ export default function EmpresaPublicPage() {
       }
     } catch (error) {
       console.error('Error fetching empresa:', error)
+    } finally {
+      setLoadingEmpresa(false)
     }
   }
 
@@ -48,11 +51,11 @@ export default function EmpresaPublicPage() {
     } catch (error) {
       console.error('Error fetching produtos:', error)
     } finally {
-      setLoading(false)
+      setLoadingProdutos(false)
     }
   }
 
-  if (loading) {
+  if (loadingEmpresa || loadingProdutos) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-bandfm-orange-500"></div>
@@ -60,7 +63,7 @@ export default function EmpresaPublicPage() {
     )
   }
 
-  if (!empresa) {
+  if (!loadingEmpresa && !empresa) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">

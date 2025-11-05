@@ -6,6 +6,56 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/clube-ouvintes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/clube-ouvintes/page.js"
+    ],
+    "/api/empresas/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/empresas/route.js"
+    ],
+    "/empresa/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/empresa/[id]/page.js"
+    ],
+    "/api/produtos/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/produtos/route.js"
+    ],
+    "/api/empresas/[id]/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/empresas/[id]/route.js"
+    ],
+    "/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/login/page.js"
+    ],
+    "/api/auth/login/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/auth/login/route.js"
+    ],
+    "/admin/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/page.js"
+    ],
+    "/admin/empresas/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/empresas/page.js"
+    ],
+    "/login-empresa/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/login-empresa/page.js"
+    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -31,60 +81,30 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/promocoes/route.js"
     ],
-    "/promocoes/page": [
+    "/api/auth/login-empresa/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/promocoes/page.js"
-    ],
-    "/noticias/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/noticias/page.js"
-    ],
-    "/programacao/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/programacao/page.js"
-    ],
-    "/api/programacao/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/programacao/route.js"
+      "static/chunks/app/api/auth/login-empresa/route.js"
     ],
     "/empresa/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/empresa/page.js"
     ],
-    "/login-empresa/page": [
+    "/empresa/produtos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/login-empresa/page.js"
+      "static/chunks/app/empresa/produtos/page.js"
     ],
-    "/clube-ouvintes/page": [
+    "/api/upload/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/clube-ouvintes/page.js"
+      "static/chunks/app/api/upload/route.js"
     ],
-    "/api/empresas/route": [
+    "/api/produtos/[id]/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/empresas/route.js"
-    ],
-    "/empresa/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/empresa/[id]/page.js"
-    ],
-    "/api/produtos/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/produtos/route.js"
-    ],
-    "/api/empresas/[id]/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/empresas/[id]/route.js"
+      "static/chunks/app/api/produtos/[id]/route.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
