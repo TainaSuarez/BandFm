@@ -134,9 +134,9 @@ export default function SiteNavbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center">
             <div className="flex items-center space-x-8">
-              <a href="#inicio" className="text-black hover:text-bandfm-orange-500 px-3 py-2 text-base font-helvetica-black font-bold uppercase tracking-widerr">
+              <Link href="/" className="text-black hover:text-bandfm-orange-500 px-3 py-2 text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 HOME
-              </a>
+              </Link>
               <Link href="/noticias" className="text-black hover:text-bandfm-orange-500 px-3 py-2 text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 NOTÍCIAS
               </Link>
@@ -206,9 +206,13 @@ export default function SiteNavbar() {
         {menuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-150">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#inicio" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black font-bold uppercase tracking-widerr">
+              <Link 
+                href="/" 
+                className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black font-bold uppercase tracking-widerr"
+                onClick={() => setMenuOpen(false)}
+              >
                 HOME
-              </a>
+              </Link>
               <Link href="/noticias" className="text-black hover:text-bandfm-orange-500 block px-3 py-2 rounded-md text-base font-helvetica-black font-bold uppercase tracking-widerr">
                 NOTÍCIAS
               </Link>

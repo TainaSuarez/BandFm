@@ -21,45 +21,35 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/noticias/route.js"
     ],
-    "/api/promocoes/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/promocoes/route.js"
-    ],
     "/api/banners/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/banners/route.js"
     ],
-    "/login/page": [
+    "/api/promocoes/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
-    ],
-    "/api/auth/login/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/auth/login/route.js"
-    ],
-    "/login-empresa/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/login-empresa/page.js"
-    ],
-    "/api/auth/login-empresa/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/auth/login-empresa/route.js"
+      "static/chunks/app/api/promocoes/route.js"
     ],
     "/promocoes/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/promocoes/page.js"
     ],
-    "/_not-found/page": [
+    "/noticias/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/noticias/page.js"
+    ],
+    "/programacao/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/programacao/page.js"
+    ],
+    "/api/programacao/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/programacao/route.js"
     ]
   }
 }
