@@ -241,7 +241,7 @@ export default function EmpresaPublicPage() {
                     <img 
                       src={produto.imagem} 
                       alt={produto.nome} 
-                      className="w-full h-40 sm:h-52 lg:h-56 object-cover group-hover:scale-105 transition-transform duration-300" 
+                      className="w-full h-auto object-contain bg-white group-hover:scale-105 transition-transform duration-300" 
                     />
                     <div className="absolute top-2 right-2">
                       <span className="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold bg-bandfm-green-500 text-white shadow-lg">
@@ -318,7 +318,7 @@ export default function EmpresaPublicPage() {
       {/* Modal de Imagen */}
       {selectedImage && selectedProduct && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          className="fixed inset-0 bg-white/80 z-50 flex items-center justify-center p-4 animate-fadeIn"
           onClick={() => {
             setSelectedImage(null)
             setSelectedProduct(null)
@@ -349,7 +349,7 @@ export default function EmpresaPublicPage() {
                 <img
                   src={selectedImage}
                   alt={selectedProduct.nome}
-                  className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                  className="w-full h-auto max-h-[75vh] object-contain bg-white"
                 />
               </div>
               
