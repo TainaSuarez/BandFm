@@ -80,9 +80,16 @@ export default function EmpresaPublicPage() {
   }
 
   const handleWhatsAppContact = (produtoNome: string) => {
-    const telefone = empresa.telefono?.replace(/\D/g, '') || ''
+    const telefone = empresa?.telefono ? empresa.telefono.replace(/\D/g, '') : ''
     const mensagem = `Olá, gostaria de saber mais sobre este produto "${produtoNome}"`
     const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`
+
+    if (!telefone) {
+      // Sem telefone cadastrado, evita abrir link inválido
+      alert('Esta empresa não possui WhatsApp cadastrado.')
+      return
+    }
+
     window.open(whatsappUrl, '_blank')
   }
 
