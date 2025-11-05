@@ -228,7 +228,7 @@ export default function EmpresaPublicPage() {
               {produtos.map((produto) => (
                 <div 
                   key={produto.id} 
-                  className="bg-white rounded-lg sm:rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100"
+                  className="bg-white rounded-lg sm:rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
                 >
                   {/* Imagen del Produto (click para abrir modal) */}
                   <div 
@@ -236,12 +236,12 @@ export default function EmpresaPublicPage() {
                       setSelectedImage(produto.imagem)
                       setSelectedProduct(produto)
                     }}
-                    className="relative overflow-hidden bg-gray-100 cursor-pointer group"
+                    className="relative overflow-hidden bg-gray-100 cursor-pointer group aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/3]"
                   >
                     <img 
                       src={produto.imagem} 
                       alt={produto.nome} 
-                      className="w-full h-auto object-contain bg-white group-hover:scale-105 transition-transform duration-300" 
+                      className="absolute inset-0 w-full h-full object-contain bg-white group-hover:scale-105 transition-transform duration-300" 
                     />
                     <div className="absolute top-2 right-2">
                       <span className="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold bg-bandfm-green-500 text-white shadow-lg">
@@ -259,13 +259,13 @@ export default function EmpresaPublicPage() {
                   </div>
                   
                   {/* Info del Producto */}
-                  <div className="p-3 sm:p-4 lg:p-5">
+                  <div className="p-3 sm:p-4 lg:p-5 flex flex-col flex-grow">
                     <h3 className="text-sm sm:text-base lg:text-lg font-black text-gray-900 mb-1.5 sm:mb-2 line-clamp-2">
                       {produto.nome}
                     </h3>
                     
-                    {/* Precio */}
-                    <div className="pt-2.5 sm:pt-3 border-t border-gray-100">
+                    {/* Precio y Botón */}
+                    <div className="pt-2.5 sm:pt-3 border-t border-gray-100 mt-auto">
                       <div className="flex items-center justify-between gap-2">
                         <div>
                           <p className="text-[10px] sm:text-xs text-gray-500 mb-0.5">Preço</p>

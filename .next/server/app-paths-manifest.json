@@ -1,6 +1,6 @@
 {
-  "/api/produtos/route": "app/api/produtos/route.js",
   "/api/empresas/[id]/route": "app/api/empresas/[id]/route.js",
+  "/api/produtos/route": "app/api/produtos/route.js",
   "/_not-found/page": "app/_not-found/page.js",
   "/programacao/page": "app/programacao/page.js",
   "/login-empresa/page": "app/login-empresa/page.js",
