@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ProgramacaoRadio } from '@/types'
 import SiteNavbar from '@/components/SiteNavbar'
-import FooterQuickAccess from '@/components/FooterQuickAccess'
+ 
 
 export default function ProgramacaoPage() {
   const [programacao, setProgramacao] = useState<ProgramacaoRadio[]>([])
   const [loading, setLoading] = useState(true)
   const [selectedDay, setSelectedDay] = useState<string>('')
-  const bandUrl = process.env.NEXT_PUBLIC_BAND_URL || '/'
+ 
 
   const diasSemana = [
     'Segunda-feira',
@@ -211,9 +211,7 @@ export default function ProgramacaoPage() {
               <p className="text-black text-sm">Email: bandfm@bandfmfronteira.com.br</p>
               <p className="text-black text-sm">Telefone: +55 3242 4092</p>
               <p className="text-black text-sm">WhatsApp: +11 3743 1313</p>
-              <div className="mt-3 flex justify-end">
-                <FooterQuickAccess linkUrl={bandUrl} label="Acessar página" />
-              </div>
+              
             </div>
           </div>
           <div className="border-t border-gray-300 mt-4 pt-4 text-center">

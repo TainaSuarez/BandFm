@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import { Empresa, Produto } from '@/types'
 
 import SiteNavbar from '@/components/SiteNavbar'
-import FooterQuickAccess from '@/components/FooterQuickAccess'
+ 
 
 export default function EmpresaPublicPage() {
   const params = useParams()
@@ -20,7 +20,7 @@ export default function EmpresaPublicPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null)
   const [expandedDesc, setExpandedDesc] = useState<Record<string, boolean>>({})
-  const bandUrl = process.env.NEXT_PUBLIC_BAND_URL || '/'
+ 
 
   useEffect(() => {
     if (empresaId) {
@@ -425,7 +425,7 @@ export default function EmpresaPublicPage() {
               <p className="text-black text-sm">Telefone: +55 3242 4092</p>
               <p className="text-black text-sm">WhatsApp: +11 3743 1313</p>
               <div className="mt-3 flex justify-end">
-                <FooterQuickAccess linkUrl={bandUrl} label="Acessar página" />
+                
               </div>
             </div>
           </div>

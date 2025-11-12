@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Band FM Livramento',
-    short_name: 'Band FM',
+  short_name: 'Band FM Livramento',
     description: 'Rádio Band FM Livramento - web app responsiva',
     start_url: '/',
     display: 'standalone',

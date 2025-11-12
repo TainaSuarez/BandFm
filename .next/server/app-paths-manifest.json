@@ -1,8 +1,8 @@
 {
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
   "/api/enquete-musica/route": "app/api/enquete-musica/route.js",
   "/api/noticias/route": "app/api/noticias/route.js",
   "/api/promocoes/route": "app/api/promocoes/route.js",
   "/api/banners/route": "app/api/banners/route.js",
-  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
   "/page": "app/page.js"
 }
