@@ -6,30 +6,40 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/clube-ouvintes/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/clube-ouvintes/page.js"
+      "static/chunks/app/page.js"
     ],
-    "/api/empresas/route": [
+    "/api/noticias/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/empresas/route.js"
+      "static/chunks/app/api/noticias/route.js"
     ],
-    "/empresa/[id]/page": [
+    "/api/enquete-musica/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/empresa/[id]/page.js"
+      "static/chunks/app/api/enquete-musica/route.js"
     ],
-    "/api/produtos/route": [
+    "/api/promocoes/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/produtos/route.js"
+      "static/chunks/app/api/promocoes/route.js"
     ],
-    "/api/empresas/[id]/route": [
+    "/api/banners/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/empresas/[id]/route.js"
+      "static/chunks/app/api/banners/route.js"
+    ],
+    "/manifest.webmanifest/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/manifest.webmanifest/route.js"
+    ],
+    "/noticias/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/noticias/page.js"
     ],
     "/login/page": [
       "static/chunks/webpack.js",
@@ -45,66 +55,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/admin/page.js"
-    ],
-    "/admin/empresas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/empresas/page.js"
-    ],
-    "/login-empresa/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/login-empresa/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/api/enquete-musica/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/enquete-musica/route.js"
-    ],
-    "/api/noticias/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/noticias/route.js"
-    ],
-    "/api/banners/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/banners/route.js"
-    ],
-    "/api/promocoes/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/promocoes/route.js"
-    ],
-    "/api/auth/login-empresa/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/auth/login-empresa/route.js"
-    ],
-    "/empresa/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/empresa/page.js"
-    ],
-    "/empresa/produtos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/empresa/produtos/page.js"
-    ],
-    "/api/upload/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/upload/route.js"
-    ],
-    "/api/produtos/[id]/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/produtos/[id]/route.js"
     ]
   }
 }

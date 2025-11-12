@@ -5,10 +5,12 @@ import Link from 'next/link'
 import { Podcast } from '@/types'
 import SiteNavbar from '@/components/SiteNavbar'
 import PodcastPlayer from '@/components/PodcastPlayer'
+import FooterQuickAccess from '@/components/FooterQuickAccess'
 
 export default function PodcastsPage() {
   const [podcasts, setPodcasts] = useState<Podcast[]>([])
   const [loading, setLoading] = useState(true)
+  const bandUrl = process.env.NEXT_PUBLIC_BAND_URL || '/'
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -140,6 +142,9 @@ export default function PodcastsPage() {
               <p className="text-black text-sm">Email: bandfm@bandfmfronteira.com.br</p>
               <p className="text-black text-sm">Telefone: +55 3242 4092</p>
               <p className="text-black text-sm">WhatsApp: +11 3743 1313</p>
+              <div className="mt-3 flex justify-end">
+                <FooterQuickAccess linkUrl={bandUrl} label="Acessar página" />
+              </div>
             </div>
           </div>
           <div className="border-t border-gray-300 mt-4 pt-4 text-center">

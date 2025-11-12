@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import SiteNavbar from '@/components/SiteNavbar'
+import FooterQuickAccess from '@/components/FooterQuickAccess'
 
 export default function SobrePage() {
+  const bandUrl = process.env.NEXT_PUBLIC_BAND_URL || '/'
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
@@ -229,6 +231,9 @@ export default function SobrePage() {
               <p className="text-black text-sm">Email: bandfm@bandfmfronteira.com.br</p>
               <p className="text-black text-sm">Telefone: +55 3242 4092</p>
               <p className="text-black text-sm">WhatsApp: +11 3743 1313</p>
+              <div className="mt-3 flex justify-end">
+                <FooterQuickAccess linkUrl={bandUrl} label="Acessar página" />
+              </div>
             </div>
           </div>
           <div className="border-t border-gray-300 mt-4 pt-4 text-center">
