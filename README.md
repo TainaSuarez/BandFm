@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎵 Band FM - Sistema Web de Radio
+# Band FM - Sistema Web de Radio
 
 <img src="./public/logo-bandfm.png" alt="Band FM Logo" width="200"/>
 
@@ -17,7 +17,7 @@
 
 ---
 
-## 📋 Tabla de Contenidos
+## Tabla de Contenidos
 
 - [Acerca del Proyecto](#-acerca-del-proyecto)
 - [Características Principales](#-características-principales)
@@ -35,22 +35,22 @@
 
 ---
 
-## 🎯 Acerca del Proyecto
+## Acerca del Proyecto
 
 **Band FM** es una plataforma web moderna y completa diseñada para la gestión integral de una estación de radio online. Ofrece una experiencia intuitiva tanto para los administradores del sistema como para los oyentes, con características avanzadas de gestión de contenido multimedia.
 
 ### ¿Para quién es este sistema?
 
-- 📻 **Estaciones de radio** que quieren presencia digital profesional
-- 🎙️ **Emisoras locales** que necesitan gestionar contenido fácilmente
-- 🏢 **Empresas de medios** que buscan una solución escalable
-- 👥 **Comunidades** que desean su propia radio online
+- **Estaciones de radio** que quieren presencia digital profesional
+- **Emisoras locales** que necesitan gestionar contenido fácilmente
+- **Empresas de medios** que buscan una solución escalable
+- **Comunidades** que desean su propia radio online
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
-### 🌐 Portal Público
+### Portal Público
 
 <table>
 <tr>
@@ -58,17 +58,17 @@
 
 #### Para los Oyentes
 
-- 🎵 **Reproductor de Radio en Vivo**
+- **Reproductor de Radio en Vivo**
   - Streaming de audio continuo
   - Controles intuitivos
   - Visualización de lo que está sonando
 
-- 📰 **Noticias Actualizadas**
+- **Noticias Actualizadas**
   - Feed de noticias dinámico
   - Imágenes y descripciones
   - Enlaces a fuentes originales
 
-- 📻 **Programación**
+-  **Programación**
   - Horarios detallados
   - Información de presentadores
   - Programas por día de la semana
@@ -78,21 +78,21 @@
 
 #### Más Funciones
 
-- 🎁 **Promociones y Sorteos**
+- **Promociones y Sorteos**
   - Promociones activas
   - Detalles de participación
 
-- 🎙️ **Podcasts**
+-  **Podcasts**
   - Biblioteca de episodios
   - Reproductor integrado
   - Descarga de contenido
 
-- 📸 **Galería Multimedia**
+- **Galería Multimedia**
   - Fotos y videos de eventos
   - Vista tipo masonry
   - Lightbox integrado
 
-- 🏢 **Directorio de Empresas**
+- **Directorio de Empresas**
   - Catálogo de negocios asociados
   - Productos destacados
 
@@ -100,7 +100,7 @@
 </tr>
 </table>
 
-### 🔐 Panel Administrativo
+###  Panel Administrativo
 
 <table>
 <tr>
@@ -108,30 +108,30 @@
 
 #### Gestión de Contenido
 
-- 📝 **Noticias**: Crear, editar y eliminar noticias
-- 🎁 **Promociones**: Gestionar campañas promocionales
-- 📻 **Programación**: Configurar horarios y programas
-- 🎙️ **Podcasts**: Subir y gestionar episodios
-- 📸 **Galería**: Administrar fotos y videos
-- 🎯 **Banners**: Control de publicidad
+-  **Noticias**: Crear, editar y eliminar noticias
+-  **Promociones**: Gestionar campañas promocionales
+-  **Programación**: Configurar horarios y programas
+-  **Podcasts**: Subir y gestionar episodios
+-  **Galería**: Administrar fotos y videos
+-  **Banners**: Control de publicidad
 
 </td>
 <td width="50%">
 
 #### Gestión Avanzada
 
-- 🏢 **Empresas**: CRUD completo de negocios
-- 🛍️ **Productos**: Catálogo por empresa
-- 👥 **Administradores**: Gestión de usuarios admin
-- 📊 **Encuestas Musicales**: Votaciones de géneros
-- 🔒 **Seguridad**: Autenticación y autorización
-- 📈 **Dashboard**: Estadísticas en tiempo real
+-  **Empresas**: CRUD completo de negocios
+-  **Productos**: Catálogo por empresa
+-  **Administradores**: Gestión de usuarios admin
+-  **Encuestas Musicales**: Votaciones de géneros
+-  **Seguridad**: Autenticación y autorización
+-  **Dashboard**: Estadísticas en tiempo real
 
 </td>
 </tr>
 </table>
 
-### 🎨 Características Técnicas
+###  Características Técnicas
 
 - ✅ **Diseño Responsivo**: Funciona perfectamente en móviles, tablets y desktop
 - ✅ **PWA Ready**: Instalable como aplicación nativa
@@ -142,7 +142,7 @@
 
 ---
 
-## 🛠️ Tecnologías
+## Tecnologías
 
 ### Frontend
 
@@ -164,13 +164,13 @@
 
 ### Integraciones
 
-- 📦 **Supabase** - Hosting de base de datos y storage
-- 🎨 **Autoprefixer** - Compatibilidad CSS cross-browser
-- 🔍 **ESLint** - Linter para código JavaScript/TypeScript
+-  **Supabase** - Hosting de base de datos y storage
+-  **Autoprefixer** - Compatibilidad CSS cross-browser
+-  **ESLint** - Linter para código JavaScript/TypeScript
 
 ---
 
-## 📋 Requisitos Previos
+## Requisitos Previos
 
 Antes de comenzar, asegúrate de tener instalado:
 
@@ -189,7 +189,7 @@ git --version   # Debe mostrar 2.30.0 o superior
 
 ---
 
-## 🚀 Instalación Rápida
+## Instalación Rápida
 
 ### 1️⃣ Clonar el Repositorio
 
@@ -242,11 +242,11 @@ node scripts/create-admin.js
 npm run dev
 ```
 
-🎉 **¡Listo!** Abre tu navegador en [http://localhost:3000](http://localhost:3000)
+ **¡Listo!** Abre tu navegador en [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## ⚙️ Configuración
+## Configuración
 
 ### Variables de Entorno
 
@@ -280,7 +280,7 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 
 ---
 
-## 💡 Uso
+## Uso
 
 ### Acceso al Sistema
 
@@ -290,11 +290,11 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 
 #### Panel Administrativo
 - **URL**: `http://localhost:3000/login`
-- **Credenciales por defecto**:
-  - Email: `admin@bandfm.com`
-  - Contraseña: `admin123`
+- **Credenciales del Administrador Master**:
+  - Email: `bandfm@bandfmfronteira.com.br`
+  - Contraseña: `RadioLivramento#2025`
 
-⚠️ **IMPORTANTE**: Cambia estas credenciales después del primer login
+⚠️ **IMPORTANTE**: Guarde estas credenciales en un lugar seguro
 
 #### Portal de Empresas
 - **URL**: `http://localhost:3000/login-empresa`
@@ -303,7 +303,7 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 ### Funcionalidades del Admin
 
 <details>
-<summary><b>📝 Gestionar Noticias</b></summary>
+<summary><b> Gestionar Noticias</b></summary>
 
 1. Accede al panel de administración
 2. Haz clic en **"Noticias"** en el menú lateral
@@ -316,7 +316,7 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 </details>
 
 <details>
-<summary><b>📻 Configurar Programación</b></summary>
+<summary><b> Configurar Programación</b></summary>
 
 1. Ve a **"Programación"** en el panel admin
 2. Clic en "Nuevo Programa"
@@ -330,7 +330,7 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 </details>
 
 <details>
-<summary><b>🏢 Administrar Empresas</b></summary>
+<summary><b> Administrar Empresas</b></summary>
 
 1. Ve a **"Empresas"** en el panel
 2. Clic en "Nueva Empresa"
@@ -344,7 +344,7 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 </details>
 
 <details>
-<summary><b>🎙️ Subir Podcasts</b></summary>
+<summary><b> Subir Podcasts</b></summary>
 
 1. Ve a **"Podcasts"** en el menú
 2. Clic en "Nuevo Podcast"
@@ -359,7 +359,7 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 AppBandFM/
@@ -432,7 +432,7 @@ AppBandFM/
 
 ---
 
-## 🗄️ Base de Datos
+## Base de Datos
 
 ### Modelos Principales
 
@@ -470,13 +470,13 @@ npm run db:generate
 # Sincronizar cambios con la base de datos
 npm run db:push
 
-# Reset completo (⚠️ borra todos los datos)
+# Reset completo ( borra todos los datos)
 npx prisma db push --force-reset
 ```
 
 ---
 
-## 📜 Scripts Disponibles
+##  Scripts Disponibles
 
 ### Desarrollo
 
@@ -528,116 +528,7 @@ node scripts/test-db-connection.js
 
 ---
 
-## 🚀 Deploy
-
-### Deploy en Vercel (Recomendado)
-
-Vercel es la plataforma creada por los desarrolladores de Next.js, ofrece deploy automático y gratuito:
-
-1. **Sube tu código a GitHub/GitLab**
-
-2. **Importa en Vercel**
-   - Ve a [vercel.com](https://vercel.com)
-   - Haz clic en "New Project"
-   - Importa tu repositorio
-
-3. **Configura variables de entorno**
-   - Agrega todas las variables del archivo `.env`
-   - Asegúrate de usar URLs de producción
-
-4. **Deploy automático**
-   - Vercel construirá y desplegará automáticamente
-   - Cada push a main hará un nuevo deploy
-
-### Deploy en Otras Plataformas
-
-<details>
-<summary><b>Netlify</b></summary>
-
-```bash
-npm run build
-# Configura ./out como directorio de salida
-```
-
-</details>
-
-<details>
-<summary><b>Railway</b></summary>
-
-1. Conecta tu repositorio
-2. Railway detectará Next.js automáticamente
-3. Configura variables de entorno
-4. Deploy automático
-
-</details>
-
-<details>
-<summary><b>Servidor VPS (Ubuntu)</b></summary>
-
-```bash
-# Instalar Node.js
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Clonar y configurar
-git clone <tu-repo>
-cd AppBandFM
-npm install
-npm run build
-
-# Usar PM2 para mantener el servidor corriendo
-npm install -g pm2
-pm2 start npm --name "bandfm" -- start
-pm2 startup
-pm2 save
-```
-
-</details>
-
-### Checklist de Deploy
-
-- [ ] Variables de entorno configuradas
-- [ ] Base de datos PostgreSQL en producción configurada
-- [ ] URLs actualizadas en `NEXTAUTH_URL`
-- [ ] Cambiar credenciales de admin por defecto
-- [ ] Configurar dominio personalizado
-- [ ] SSL/HTTPS activado
-- [ ] Backups de base de datos configurados
-- [ ] Monitoreo de errores (opcional)
-
----
-
-## 📚 Documentación
-
-### Documentación del Proyecto
-
-- 📖 **Manual de Instalación** - Guía detallada de instalación paso a paso
-- 🔧 **Guía del Administrador** - Documentación del panel administrativo
-- 🏢 **Guía de Empresas** - Cómo usar el portal de empresas
-
-### Documentación de Tecnologías
-
-- [Next.js Documentation](https://nextjs.org/docs) - Características y API de Next.js
-- [React Documentation](https://react.dev/) - Aprende React
-- [Prisma Documentation](https://www.prisma.io/docs) - Guías de Prisma ORM
-- [Tailwind CSS](https://tailwindcss.com/docs) - Clases de utilidad de Tailwind
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/) - Guía de TypeScript
-
----
-
-## 🤝 Contribuir
-
-Las contribuciones son bienvenidas. Si deseas mejorar el proyecto:
-
-1. Fork el repositorio
-2. Crea una rama para tu característica (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
-## 🔧 Solución de Problemas
+## Solución de Problemas
 
 ### El servidor no inicia
 
@@ -675,25 +566,14 @@ npx prisma db push --force-reset
 
 ---
 
-## 📞 Soporte
-
-¿Necesitas ayuda? Aquí tienes algunas opciones:
-
-- 📧 **Email**: soporte@bandfm.com
-- 💬 **Issues**: Abre un issue en el repositorio
-- 📖 **Documentación**: Revisa el Manual de Instalación
-
----
-
-## 📄 Licencia
+## Licencia
 
 Este proyecto es privado y propietario. Todos los derechos reservados.
 
 ---
 
-## 👏 Agradecimientos
+## Agradecimientos
 
-Desarrollado con ❤️ para **Band FM**
 
 ### Tecnologías Open Source utilizadas:
 
@@ -707,10 +587,10 @@ Desarrollado con ❤️ para **Band FM**
 
 <div align="center">
 
-### 🎵 Band FM - Tu radio online con la mejor programación
+### Band FM - Tu radio online con la mejor programación
 
-**[⬆ Volver arriba](#-band-fm---sistema-web-de-radio)**
+**[Volver arriba](#band-fm---sistema-web-de-radio)**
 
-Made with ❤️ using Next.js & TypeScript
+Desarrollado para Band FM 96.1 Livramento
 
 </div>
