@@ -174,26 +174,12 @@ export default function BannersPage() {
 
   return (
     <AdminLayout title="Gestão de Banners">
-      <div className="mb-6 flex flex-col sm:flex-row gap-2 sm:gap-4">
+      <div className="mb-6">
         <button
           onClick={() => setShowForm(true)}
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md"
         >
           Novo Banner
-        </button>
-        <button
-          onClick={async () => {
-            try {
-              const response = await fetch('/api/test')
-              const data = await response.json()
-              alert(`API Test: ${data.message}`)
-            } catch (error) {
-              alert(`Erro de conectividade: ${error instanceof Error ? error.message : 'Erro desconhecido'}`)
-            }
-          }}
-          className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md"
-        >
-          Testar API
         </button>
       </div>
 

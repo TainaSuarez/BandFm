@@ -24,12 +24,23 @@ export default function FileUpload({
   const [error, setError] = useState<string | null>(null)
 
   const handleFile = async (file: File) => {
-    if (!file) return
+    if (!file) {
+      console.error('No file provided')
+      return
+    }
+
+    console.log('Handling file:', {
+      name: file.name,
+      type: file.type,
+      size: file.size
+    })
 
     // Verificar tamanho
     const maxBytes = maxSize * 1024 * 1024
     if (file.size > maxBytes) {
-      setError(`Arquivo muito grande. Máximo ${maxSize}MB`)
+      const errorMsg = `Arquivo muito grande. Máximo ${maxSize}MB`
+      console.error(errorMsg)
+      setError(errorMsg)
       return
     }
 
@@ -37,25 +48,49 @@ export default function FileUpload({
     setError(null)
 
     try {
+      console.log('Creating FormData...')
       const formData = new FormData()
       formData.append('file', file)
 
+      console.log('Sending upload request...')
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       })
 
+      console.log('Response received:', response.status, response.statusText)
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('Server error response:', errorText)
+        try {
+          const errorJson = JSON.parse(errorText)
+          setError(errorJson.message || `Erro no servidor: ${response.status}`)
+        } catch {
+          setError(`Erro no servidor: ${response.status} - ${errorText}`)
+        }
+        return
+      }
+
       const result = await response.json()
+      console.log('Upload result:', result)
 
       if (result.success) {
+        console.log('Upload successful, URL:', result.url)
         onUpload(result.url)
         setError(null)
       } else {
+        console.error('Upload failed:', result.message)
         setError(result.message || 'Erro ao enviar arquivo')
       }
     } catch (error: any) {
       console.error('Upload error:', error)
-      setError('Erro de conexão ao enviar arquivo')
+      console.error('Error details:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack
+      })
+      setError(`Erro de conexão: ${error.message || 'Erro desconhecido'}`)
     } finally {
       setUploading(false)
     }
