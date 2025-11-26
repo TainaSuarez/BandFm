@@ -566,24 +566,7 @@ npx prisma db push --force-reset
 
 ---
 
-## Licencia
 
-Este proyecto es privado y propietario. Todos los derechos reservados.
-
----
-
-## Agradecimientos
-
-
-### Tecnologías Open Source utilizadas:
-
-- [Next.js](https://nextjs.org/)
-- [React](https://react.dev/)
-- [Prisma](https://www.prisma.io/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- Y muchas más...
-
----
 
 <div align="center">
 
