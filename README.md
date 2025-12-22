@@ -228,19 +228,6 @@ npm run dev
 
 ---
 
-### Base de Datos
-
-
-#### Opción B: Supabase (Recomendado)
-
-1. Crea una cuenta en [supabase.com](https://supabase.com)
-2. Crea un nuevo proyecto
-3. Ve a Settings > Database
-4. Copia las connection strings
-5. Úsalas en tu archivo `.env`
-
----
-
 ## Uso
 
 ### Acceso al Sistema
