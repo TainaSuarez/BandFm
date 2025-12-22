@@ -17,24 +17,6 @@
 
 ---
 
-## Tabla de Contenidos
-
-- [Acerca del Proyecto](#-acerca-del-proyecto)
-- [Características Principales](#-características-principales)
-- [Tecnologías](#-tecnologías)
-- [Requisitos Previos](#-requisitos-previos)
-- [Instalación Rápida](#-instalación-rápida)
-- [Configuración](#-configuración)
-- [Uso](#-uso)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Base de Datos](#-base-de-datos)
-- [Scripts Disponibles](#-scripts-disponibles)
-- [Deploy](#-deploy)
-- [Documentación](#-documentación)
-- [Soporte](#-soporte)
-
----
-
 ## Acerca del Proyecto
 
 **Band FM** es una plataforma web moderna y completa diseñada para la gestión integral de una estación de radio online. Ofrece una experiencia intuitiva tanto para los administradores del sistema como para los oyentes, con características avanzadas de gestión de contenido multimedia.
@@ -246,29 +228,8 @@ npm run dev
 
 ---
 
-## Configuración
-
-### Variables de Entorno
-
-| Variable | Descripción | Ejemplo |
-|----------|-------------|---------|
-| `DATABASE_URL` | URL de conexión a PostgreSQL con pooling | `postgresql://user:pass@host:6543/db?pgbouncer=true` |
-| `DIRECT_URL` | URL de conexión directa a PostgreSQL | `postgresql://user:pass@host:5432/db` |
-| `NEXTAUTH_SECRET` | Clave secreta para sesiones | Generar con `openssl rand -base64 32` |
-| `NEXTAUTH_URL` | URL base de la aplicación | `http://localhost:3000` |
-
 ### Base de Datos
 
-#### Opción A: PostgreSQL Local
-
-```bash
-# Instalar PostgreSQL y crear base de datos
-createdb bandfm
-
-# Usar en .env:
-DATABASE_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
-DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
-```
 
 #### Opción B: Supabase (Recomendado)
 
@@ -287,14 +248,6 @@ DIRECT_URL="postgresql://postgres:password@localhost:5432/bandfm?schema=public"
 #### Portal Público
 - **URL**: `http://localhost:3000`
 - **Acceso**: Libre para todos los usuarios
-
-#### Panel Administrativo
-- **URL**: `http://localhost:3000/login`
-- **Credenciales del Administrador Master**:
-  - Email: `bandfm@bandfmfronteira.com.br`
-  - Contraseña: `RadioLivramento#2025`
-
-⚠️ **IMPORTANTE**: Guarde estas credenciales en un lugar seguro
 
 #### Portal de Empresas
 - **URL**: `http://localhost:3000/login-empresa`
@@ -450,121 +403,6 @@ El proyecto utiliza **Prisma ORM** con **PostgreSQL**. La base de datos incluye 
 | **Banner** | Banners publicitarios | titulo, imagem, link, ordem |
 | **GaleriaItem** | Fotos y videos | tipo, url, legenda |
 | **EnqueteMusicaVoto** | Votos de encuestas | genero, ipAddress |
-
-### Visualizar la Base de Datos
-
-Prisma incluye una interfaz gráfica para explorar y editar datos:
-
-```bash
-npm run db:studio
-```
-
-Esto abrirá Prisma Studio en `http://localhost:5555`
-
-### Migraciones y Sincronización
-
-```bash
-# Generar cliente después de cambios en schema.prisma
-npm run db:generate
-
-# Sincronizar cambios con la base de datos
-npm run db:push
-
-# Reset completo ( borra todos los datos)
-npx prisma db push --force-reset
-```
-
----
-
-##  Scripts Disponibles
-
-### Desarrollo
-
-```bash
-# Iniciar servidor de desarrollo
-npm run dev
-
-# El servidor estará en http://localhost:3000
-# Hot reload automático activado
-```
-
-### Producción
-
-```bash
-# Construir para producción
-npm run build
-
-# Iniciar servidor de producción
-npm start
-
-# La aplicación se optimiza para mejor rendimiento
-```
-
-### Base de Datos
-
-```bash
-# Generar cliente Prisma
-npm run db:generate
-
-# Sincronizar esquema con BD
-npm run db:push
-
-# Abrir Prisma Studio
-npm run db:studio
-```
-
-### Utilidades
-
-```bash
-# Ejecutar linter
-npm run lint
-
-# Crear administrador inicial
-node scripts/create-admin.js
-
-# Verificar conexión a BD
-node scripts/test-db-connection.js
-```
-
----
-
-## Solución de Problemas
-
-### El servidor no inicia
-
-```bash
-# Verifica que el puerto 3000 esté libre
-npx kill-port 3000
-
-# Reinicia el servidor
-npm run dev
-```
-
-### Error de conexión a base de datos
-
-1. Verifica que el archivo `.env` existe y tiene las URLs correctas
-2. Verifica que PostgreSQL está corriendo
-3. Prueba la conexión: `node scripts/test-db-connection.js`
-
-### Error "Module not found"
-
-```bash
-# Reinstala dependencias
-rm -rf node_modules package-lock.json
-npm install
-```
-
-### Problemas con Prisma
-
-```bash
-# Regenera el cliente de Prisma
-npx prisma generate
-
-# Resetea la base de datos (⚠️ borra datos)
-npx prisma db push --force-reset
-```
-
----
 
 
 
